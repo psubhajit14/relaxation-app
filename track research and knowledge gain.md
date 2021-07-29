@@ -19,5 +19,12 @@ like **audioplayers: ^0.19.1** : https://pub.dev/packages/audioplayers
 **audio_service: ^0.17.1** : https://pub.dev/packages/audioplayers
 
 
+### Error fix :
+1. null is not a subtype : 
+
+
+=> **add build runner in pubspec.yml** and exceute *"pub run build_runner build"*
+
+
 
 
