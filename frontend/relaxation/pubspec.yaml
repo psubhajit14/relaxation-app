@@ -1,8 +1,7 @@
 name: relaxation
 description: A new Flutter project.
 
-
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
@@ -21,7 +20,7 @@ dependencies:
   # Functionalprogramming thingies
   fpdart: ^0.0.8
   # Remote API
-  # connectivity: 
+  # connectivity:
   # http: ^0.12.0+2
 
   # Local cache
@@ -33,15 +32,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.0.11
+  build_runner:
 
 flutter:
-
-
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
-
- 
