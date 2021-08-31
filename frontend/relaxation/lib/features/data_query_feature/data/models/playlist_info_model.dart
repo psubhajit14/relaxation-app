@@ -1,5 +1,5 @@
 import 'package:flutter_audio_query/flutter_audio_query.dart' as faq;
-import 'package:relaxation/features/data_query_feature/domain/entities/playlist_info.dart';
+import '../../domain/entities/playlist_info.dart';
 
 class PlaylistInfoModel extends PlaylistInfo {
   final String name;
