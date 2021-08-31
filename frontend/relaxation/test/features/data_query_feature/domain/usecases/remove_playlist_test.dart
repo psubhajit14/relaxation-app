@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
@@ -16,17 +18,17 @@ void main() {
     playlistInfo = PlaylistInfo(
       name: 'test',
       noOfSongs: '0',
-      songList: <SongInfo>[],
+      songList: <String>[],
     );
   });
   test('should remove playlist ', () async {
     // arrange
     when(mockRepository.removePlaylist(playlistInfo: playlistInfo))
-        .thenAnswer((_) async => Right(playlistInfo));
+        .thenAnswer((_) async => Right(Void));
     // act
     final result = await usecase(playlistInfo: playlistInfo);
     // assert
-    expect(result, Right(playlistInfo));
+    expect(result, Right(Void));
     verify(mockRepository.removePlaylist(playlistInfo: playlistInfo));
     verifyNoMoreInteractions(mockRepository);
   });

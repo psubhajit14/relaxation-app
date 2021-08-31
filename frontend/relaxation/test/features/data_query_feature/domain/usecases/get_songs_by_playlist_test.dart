@@ -31,7 +31,7 @@ void main() {
     playlistInfo = PlaylistInfo(
       name: 'test',
       noOfSongs: '0',
-      songList: <SongInfo>[],
+      songList: <String>[],
     );
   });
   test('should fetch songs from playlist ', () async {

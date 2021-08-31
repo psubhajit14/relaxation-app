@@ -1,3 +1,4 @@
 {
-    "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "dart.flutterTestAdditionalArgs": ["--no-sound-null-safety"]
 }

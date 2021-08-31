@@ -52,7 +52,7 @@ abstract class AudioQueryRepository {
     required String playlistName,
   });
 //      RemovePlaylist
-  Future<Either<Failure, PlaylistInfo>> removePlaylist({
+  Future<Either<Failure, void>> removePlaylist({
     required PlaylistInfo playlistInfo,
   });
 }

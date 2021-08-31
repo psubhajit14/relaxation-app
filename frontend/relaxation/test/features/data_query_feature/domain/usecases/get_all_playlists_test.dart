@@ -18,7 +18,7 @@ void main() {
     final PlaylistInfo playlistInfo = PlaylistInfo(
       name: 'test',
       noOfSongs: '0',
-      songList: <SongInfo>[],
+      songList: <String>[],
     );
     playlists.add(playlistInfo);
   });

@@ -5,7 +5,7 @@ class RemovePlaylist {
 
   RemovePlaylist({required this.repository});
 
-  Future<Either<Failure, PlaylistInfo>> call({
+  Future<Either<Failure, void>> call({
     required PlaylistInfo playlistInfo,
   }) async {
     return await repository.removePlaylist(playlistInfo: playlistInfo);

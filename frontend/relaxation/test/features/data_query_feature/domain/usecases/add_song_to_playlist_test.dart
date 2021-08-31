@@ -27,7 +27,7 @@ void main() {
     playlistInfo = PlaylistInfo(
       name: 'test',
       noOfSongs: '0',
-      songList: <SongInfo>[],
+      songList: <String>[],
     );
   });
   test('should add song to playlist ', () async {

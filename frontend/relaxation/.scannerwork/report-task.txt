@@ -1,0 +1,6 @@
+projectKey=relaxation-app
+serverUrl=http://localhost:9000
+serverVersion=9.0.1.46107
+dashboardUrl=http://localhost:9000/dashboard?id=relaxation-app
+ceTaskId=AXuX3AtiryWRpwo72EH5
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXuX3AtiryWRpwo72EH5
