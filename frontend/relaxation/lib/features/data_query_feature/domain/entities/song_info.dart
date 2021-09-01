@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class SongInfo extends Equatable {
+  final String id;
   final String path;
 
   final String title;
@@ -16,7 +17,8 @@ class SongInfo extends Equatable {
   final String artworkPath;
 
   SongInfo(
-      {required this.path,
+      {required this.id,
+      required this.path,
       required this.title,
       required this.duration,
       required this.artist,
@@ -25,7 +27,7 @@ class SongInfo extends Equatable {
       required this.artworkPath});
 
   @override
-  List<Object> get props => [this.path, this.title, this.duration];
+  List<Object> get props => [this.id];
 
   @override
   bool get stringify => false;

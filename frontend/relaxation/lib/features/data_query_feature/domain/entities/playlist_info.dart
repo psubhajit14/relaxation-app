@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
-import 'package:relaxation/features/data_query_feature/domain/entities/song_info.dart';
+import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 
-class Playlist implements Equatable {
+class PlaylistInfo implements Equatable {
   final String name;
   final String noOfSongs;
-  final List<SongInfo> songList;
+  final List<String> songList;
 
-  Playlist(
+  PlaylistInfo(
       {required this.name, required this.noOfSongs, required this.songList});
 
   @override
