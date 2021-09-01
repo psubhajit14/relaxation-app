@@ -25,12 +25,16 @@ import 'package:relaxation/features/data_query_feature/domain/repositories/audio
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: unnecessary_parenthesis
 
+// ignore: camel_case_types
 class _FakeEither_0<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 
+// ignore: camel_case_types
 class _FakeSongInfoModel_1 extends _i1.Fake implements _i3.SongInfoModel {}
 
+// ignore: camel_case_types
 class _FakeAlbumInfoModel_2 extends _i1.Fake implements _i3.AlbumInfoModel {}
 
+// ignore: camel_case_types
 class _FakePlaylistInfoModel_3 extends _i1.Fake
     implements _i3.PlaylistInfoModel {}
 
@@ -115,23 +119,23 @@ class MockAudioQueryRepository extends _i1.Mock
                       _FakeEither_0<_i6.Failure, List<_i7.PlaylistInfo>>()))
           as _i5.Future<_i2.Either<_i6.Failure, List<_i7.PlaylistInfo>>>);
   @override
-  _i5.Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>> addSongToPlaylist(
+  _i5.Future<_i2.Either<_i6.Failure, void>> addSongToPlaylist(
           {_i7.PlaylistInfo? playlistInfo, _i7.SongInfo? songInfo}) =>
       (super.noSuchMethod(
-          Invocation.method(#addSongToPlaylist, [],
-              {#playlistInfo: playlistInfo, #songInfo: songInfo}),
-          returnValue: Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>>.value(
-              _FakeEither_0<_i6.Failure, _i7.PlaylistInfo>())) as _i5
-          .Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>>);
+              Invocation.method(#addSongToPlaylist, [],
+                  {#playlistInfo: playlistInfo, #songInfo: songInfo}),
+              returnValue: Future<_i2.Either<_i6.Failure, void>>.value(
+                  _FakeEither_0<_i6.Failure, void>()))
+          as _i5.Future<_i2.Either<_i6.Failure, void>>);
   @override
-  _i5.Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>> removeSongToPlaylist(
+  _i5.Future<_i2.Either<_i6.Failure, void>> removeSongToPlaylist(
           {_i7.PlaylistInfo? playlistInfo, _i7.SongInfo? songInfo}) =>
       (super.noSuchMethod(
-          Invocation.method(#removeSongToPlaylist, [],
-              {#playlistInfo: playlistInfo, #songInfo: songInfo}),
-          returnValue: Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>>.value(
-              _FakeEither_0<_i6.Failure, _i7.PlaylistInfo>())) as _i5
-          .Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>>);
+              Invocation.method(#removeSongToPlaylist, [],
+                  {#playlistInfo: playlistInfo, #songInfo: songInfo}),
+              returnValue: Future<_i2.Either<_i6.Failure, void>>.value(
+                  _FakeEither_0<_i6.Failure, void>()))
+          as _i5.Future<_i2.Either<_i6.Failure, void>>);
   @override
   _i5.Future<_i2.Either<_i6.Failure, _i7.PlaylistInfo>> createPlaylist(
           {String? playlistName}) =>
@@ -219,23 +223,21 @@ class MockAudioQueryDataSource extends _i1.Mock
                   <_i3.PlaylistInfoModel>[]))
           as _i5.Future<List<_i3.PlaylistInfoModel>>);
   @override
-  _i5.Future<_i3.PlaylistInfoModel> addSongToPlaylist(
+  _i5.Future<void> addSongToPlaylist(
           {_i7.PlaylistInfo? playlistInfo, _i7.SongInfo? songInfo}) =>
       (super.noSuchMethod(
-              Invocation.method(#addSongToPlaylist, [],
-                  {#playlistInfo: playlistInfo, #songInfo: songInfo}),
-              returnValue: Future<_i3.PlaylistInfoModel>.value(
-                  _FakePlaylistInfoModel_3()))
-          as _i5.Future<_i3.PlaylistInfoModel>);
+          Invocation.method(#addSongToPlaylist, [],
+              {#playlistInfo: playlistInfo, #songInfo: songInfo}),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
   @override
-  _i5.Future<_i3.PlaylistInfoModel> removeSongToPlaylist(
+  _i5.Future<void> removeSongToPlaylist(
           {_i7.PlaylistInfo? playlistInfo, _i7.SongInfo? songInfo}) =>
       (super.noSuchMethod(
-              Invocation.method(#removeSongToPlaylist, [],
-                  {#playlistInfo: playlistInfo, #songInfo: songInfo}),
-              returnValue: Future<_i3.PlaylistInfoModel>.value(
-                  _FakePlaylistInfoModel_3()))
-          as _i5.Future<_i3.PlaylistInfoModel>);
+          Invocation.method(#removeSongToPlaylist, [],
+              {#playlistInfo: playlistInfo, #songInfo: songInfo}),
+          returnValue: Future<void>.value(),
+          returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
   @override
   _i5.Future<_i3.PlaylistInfoModel> createPlaylist({String? playlistName}) =>
       (super.noSuchMethod(

@@ -1,6 +1,6 @@
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_audio_query/flutter_audio_query.dart' as faq;
-import '../../domain/entities/playlist_info.dart';
+import 'package:relaxation/features/data_query_feature/domain/entities/playlist_info.dart';
 
 class PlaylistInfoModel extends PlaylistInfo {
   final String name;

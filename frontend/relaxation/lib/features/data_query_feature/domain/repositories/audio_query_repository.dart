@@ -26,24 +26,24 @@ abstract class AudioQueryRepository {
     required PlaylistInfo playlistInfo,
   });
   Future<Either<Failure, List<SongInfo>>> searchAllSongs({
-    String queryString,
+    required String queryString,
   });
 //      GetAllAlbum
   Future<Either<Failure, List<AlbumInfo>>> getAllAlbums();
   Future<Either<Failure, List<AlbumInfo>>> searchAllAlbums({
-    String queryString,
+    required String queryString,
   });
 //      GetAllPlaylist
   Future<Either<Failure, List<PlaylistInfo>>> getAllPlaylists();
 
 //?   -- Operation On Playlist -------------------------
 //      AddSongToPlaylist
-  Future<Either<Failure, PlaylistInfo>> addSongToPlaylist({
+  Future<Either<Failure, void>> addSongToPlaylist({
     required PlaylistInfo playlistInfo,
     required SongInfo songInfo,
   });
 //      RemoveSongToPlaylist
-  Future<Either<Failure, PlaylistInfo>> removeSongToPlaylist({
+  Future<Either<Failure, void>> removeSongToPlaylist({
     required PlaylistInfo playlistInfo,
     required SongInfo songInfo,
   });

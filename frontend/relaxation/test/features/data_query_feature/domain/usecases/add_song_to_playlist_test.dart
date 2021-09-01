@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
@@ -35,14 +37,14 @@ void main() {
     when(mockRepository.addSongToPlaylist(
       songInfo: song,
       playlistInfo: playlistInfo,
-    )).thenAnswer((_) async => Right(playlistInfo));
+    )).thenAnswer((_) async => Right(Void));
     // act
     final result = await usecase(
       playlistInfo: playlistInfo,
       songInfo: song,
     );
     // assert
-    expect(result, Right(playlistInfo));
+    expect(result, Right(Void));
     verify(mockRepository.addSongToPlaylist(
       songInfo: song,
       playlistInfo: playlistInfo,

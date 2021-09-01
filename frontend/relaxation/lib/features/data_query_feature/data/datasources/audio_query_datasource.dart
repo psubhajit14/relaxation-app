@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import '../models/models.dart';
-import '../../domain/entities/entities.dart';
+import 'package:relaxation/features/data_query_feature/data/models/models.dart';
+import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 
 abstract class AudioQueryDataSource {
 //?  -- Get Single Data --------------------------
@@ -27,24 +27,24 @@ abstract class AudioQueryDataSource {
     required PlaylistInfo playlistInfo,
   });
   Future<List<SongInfoModel>> searchAllSongs({
-    String queryString,
+    required String queryString,
   });
 //      GetAllAlbum
   Future<List<AlbumInfoModel>> getAllAlbums();
   Future<List<AlbumInfoModel>> searchAllAlbums({
-    String queryString,
+    required String queryString,
   });
 //      GetAllPlaylist
   Future<List<PlaylistInfoModel>> getAllPlaylists();
 
 //?   -- Operation On Playlist -------------------------
 //      AddSongToPlaylist
-  Future<PlaylistInfoModel> addSongToPlaylist({
+  Future<void> addSongToPlaylist({
     required PlaylistInfo playlistInfo,
     required SongInfo songInfo,
   });
 //      RemoveSongToPlaylist
-  Future<PlaylistInfoModel> removeSongToPlaylist({
+  Future<void> removeSongToPlaylist({
     required PlaylistInfo playlistInfo,
     required SongInfo songInfo,
   });

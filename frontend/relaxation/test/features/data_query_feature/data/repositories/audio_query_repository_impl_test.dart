@@ -166,19 +166,7 @@ void main() {
         expect(result, equals(Right(albumInfo)));
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getAlbum(id: albumInfo.id))
-            .thenThrow(NoDataFoundException());
-        // act
-        final result = await repository.getAlbum(id: albumInfo.id);
-        // assert
-        verify(mockAudioQueryDataSource.getAlbum(id: albumInfo.id));
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoAlbumFoundFailure on NoAlbumFoundException',
       () async {
@@ -212,21 +200,7 @@ void main() {
         expect(result.getRight().getOrElse(() => <SongInfo>[]), songInfoList);
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.searchAllSongs(queryString: queryString))
-            .thenThrow(NoDataFoundException());
-        // act
-        final result =
-            await repository.searchAllSongs(queryString: queryString);
-        // assert
-        verify(
-            mockAudioQueryDataSource.searchAllSongs(queryString: queryString));
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoAlbumFoundFailure on NoAlbumFoundException',
       () async {
@@ -260,21 +234,7 @@ void main() {
         listExists(result, albuminfoList);
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.searchAllAlbums(queryString: queryString))
-            .thenThrow(NoDataFoundException());
-        // act
-        final result =
-            await repository.searchAllAlbums(queryString: queryString);
-        // assert
-        verify(
-            mockAudioQueryDataSource.searchAllAlbums(queryString: queryString));
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoAlbumFoundFailure on NoAlbumFoundException',
       () async {
@@ -306,19 +266,7 @@ void main() {
         listExists(result, albuminfoList);
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getAllAlbums())
-            .thenThrow(NoDataFoundException());
-        // act
-        final result = await repository.getAllAlbums();
-        // assert
-        verify(mockAudioQueryDataSource.getAllAlbums());
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoAlbumFoundFailure on NoAlbumFoundException',
       () async {
@@ -349,19 +297,6 @@ void main() {
       },
     );
     test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getAllPlaylists())
-            .thenThrow(NoDataFoundException());
-        // act
-        final result = await repository.getAllPlaylists();
-        // assert
-        verify(mockAudioQueryDataSource.getAllPlaylists());
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
-    test(
       'show NoPlayListFoundFailure on NoPlayListFoundException',
       () async {
         // arrange
@@ -388,19 +323,6 @@ void main() {
         // assert
         verify(mockAudioQueryDataSource.getAllSongs());
         listExists(result, songInfoList);
-      },
-    );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getAllSongs())
-            .thenThrow(NoDataFoundException());
-        // act
-        final result = await repository.getAllSongs();
-        // assert
-        verify(mockAudioQueryDataSource.getAllSongs());
-        expect(result, equals(Left(NoDataFoundFailure())));
       },
     );
     test(
@@ -434,22 +356,7 @@ void main() {
         listExists(result, songInfoList);
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getSongsByAlbum(
-                albumid: albumInfoModel.id))
-            .thenThrow(NoDataFoundException());
-        // act
-        final result =
-            await repository.getSongsByAlbum(albumid: albumInfoModel.id);
-        // assert
-        verify(mockAudioQueryDataSource.getSongsByAlbum(
-            albumid: albumInfoModel.id));
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoSongFoundFailure on NoSongFoundException',
       () async {
@@ -484,22 +391,7 @@ void main() {
         listExists(result, songInfoList);
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getSongsByPlaylist(
-                playlistInfo: playlistInfoModel))
-            .thenThrow(NoDataFoundException());
-        // act
-        final result = await repository.getSongsByPlaylist(
-            playlistInfo: playlistInfoModel);
-        // assert
-        verify(mockAudioQueryDataSource.getSongsByPlaylist(
-            playlistInfo: playlistInfoModel));
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoSongFoundFailure on NoSongFoundException',
       () async {
@@ -535,19 +427,19 @@ void main() {
       },
     );
     test(
-      'show NoDataFoundFailure on NoDataFoundException',
+      'show NoPlayListFoundFailure on NoPlayListFoundException',
       () async {
         // arrange
         when(mockAudioQueryDataSource.removePlaylist(
-                playlistInfo: playlistInfoModel))
-            .thenThrow(NoDataFoundException());
+                playlistInfo: playlistInfo))
+            .thenThrow(NoPlayListFoundException());
         // act
         final result =
-            await repository.removePlaylist(playlistInfo: playlistInfoModel);
+            await repository.removePlaylist(playlistInfo: playlistInfo);
         // assert
         verify(mockAudioQueryDataSource.removePlaylist(
-            playlistInfo: playlistInfoModel));
-        expect(result, equals(Left(NoDataFoundFailure())));
+            playlistInfo: playlistInfo));
+        expect(result, equals(Left(NoPlayListFoundFailure())));
       },
     );
   });
@@ -568,20 +460,21 @@ void main() {
         expect(result, Right(playlistInfo));
       },
     );
+
     test(
-      'show NoDataFoundFailure on NoDataFoundException',
+      'show NoSongFoundFailure on NoSongFoundException',
       () async {
         // arrange
         when(mockAudioQueryDataSource.removeSongToPlaylist(
                 playlistInfo: playlistInfoModel, songInfo: songInfoModel))
-            .thenThrow(NoDataFoundException());
+            .thenThrow(NoSongFoundException());
         // act
         final result = await repository.removeSongToPlaylist(
             playlistInfo: playlistInfoModel, songInfo: songInfoModel);
         // assert
         verify(mockAudioQueryDataSource.removeSongToPlaylist(
             playlistInfo: playlistInfoModel, songInfo: songInfoModel));
-        expect(result, equals(Left(NoDataFoundFailure())));
+        expect(result, equals(Left(NoSongFoundFailure())));
       },
     );
     test(
@@ -600,22 +493,6 @@ void main() {
         expect(result, equals(Left(NoPlayListFoundFailure())));
       },
     );
-    test(
-      'show NoSongFoundFailure on NoSongFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.removeSongToPlaylist(
-                playlistInfo: playlistInfoModel, songInfo: songInfoModel))
-            .thenThrow(NoSongFoundException());
-        // act
-        final result = await repository.removeSongToPlaylist(
-            playlistInfo: playlistInfoModel, songInfo: songInfoModel);
-        // assert
-        verify(mockAudioQueryDataSource.removeSongToPlaylist(
-            playlistInfo: playlistInfoModel, songInfo: songInfoModel));
-        expect(result, equals(Left(NoSongFoundFailure())));
-      },
-    );
   });
   group('getSong :', () {
     test(
@@ -632,19 +509,7 @@ void main() {
         expect(result, Right(songInfo));
       },
     );
-    test(
-      'show NoDataFoundFailure on NoDataFoundException',
-      () async {
-        // arrange
-        when(mockAudioQueryDataSource.getSong(id: songInfo.id))
-            .thenThrow(NoDataFoundException());
-        // act
-        final result = await repository.getSong(id: songInfo.id);
-        // assert
-        verify(mockAudioQueryDataSource.getSong(id: songInfo.id));
-        expect(result, equals(Left(NoDataFoundFailure())));
-      },
-    );
+
     test(
       'show NoSongFoundFailure on NoSongFoundException',
       () async {
