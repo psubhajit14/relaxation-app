@@ -1,5 +1,7 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_audio_query/flutter_audio_query.dart' as faq;
-import 'package:relaxation/features/data_query_feature/domain/entities/album_info.dart';
+
+import '../../domain/entities/album_info.dart';
 
 class AlbumInfoModel extends AlbumInfo {
   final String id;

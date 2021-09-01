@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
-import 'package:relaxation/features/data_query_feature/domain/usecases/add_song_to_playlist.dart';
 import 'package:relaxation/features/data_query_feature/domain/usecases/get_songs_by_playlist.dart';
 //! important
 import '../../../../core/shared/shared_mocks.mocks.dart';

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 
 class PlaylistInfo implements Equatable {
   final String name;

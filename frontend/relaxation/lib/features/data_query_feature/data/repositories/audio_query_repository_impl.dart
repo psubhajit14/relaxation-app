@@ -1,11 +1,12 @@
-import 'package:relaxation/core/error/exception.dart';
-import 'package:relaxation/core/utils.dart';
-import 'package:relaxation/features/data_query_feature/data/datasources/audio_query_datasource.dart';
-import 'package:relaxation/core/error/failures.dart';
+import '../../../../core/error/exception.dart';
+import '../../../../core/utils.dart';
+import '../datasources/audio_query_datasource.dart';
+import '../../../../core/error/failures.dart';
+// ignore: implementation_imports
 import 'package:fpdart/src/either.dart';
-import 'package:relaxation/features/data_query_feature/data/models/models.dart';
-import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
-import 'package:relaxation/features/data_query_feature/domain/repositories/audio_query_repository.dart';
+import '../models/models.dart';
+import '../../domain/entities/entities.dart';
+import '../../domain/repositories/audio_query_repository.dart';
 
 class AudioQueryRepositoryImpl implements AudioQueryRepository {
   final AudioQueryDataSource dataSource;

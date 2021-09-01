@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:relaxation/features/data_query_feature/data/models/models.dart';
-import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
+import '../models/models.dart';
+import '../../domain/entities/entities.dart';
 
 abstract class AudioQueryDataSource {
 //?  -- Get Single Data --------------------------
