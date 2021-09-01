@@ -1,3 +1,4 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_audio_query/flutter_audio_query.dart' as faq;
 import '../../domain/entities/playlist_info.dart';
 
@@ -17,7 +18,6 @@ class PlaylistInfoModel extends PlaylistInfo {
   bool get stringify => false;
 
   factory PlaylistInfoModel.fromDevice(faq.PlaylistInfo playlistInfo) {
-    faq.FlutterAudioQuery flutterAudioQuery = faq.FlutterAudioQuery();
     return PlaylistInfoModel(
         name: playlistInfo.name,
         noOfSongs: playlistInfo.memberIds.length.toString(),

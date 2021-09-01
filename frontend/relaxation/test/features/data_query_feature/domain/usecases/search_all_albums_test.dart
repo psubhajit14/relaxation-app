@@ -2,9 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_songs.dart';
 import 'package:relaxation/features/data_query_feature/domain/usecases/search_all_albums.dart';
-import 'package:relaxation/features/data_query_feature/domain/usecases/search_all_songs.dart';
 //! important
 import '../../../../core/shared/shared_mocks.mocks.dart';
 

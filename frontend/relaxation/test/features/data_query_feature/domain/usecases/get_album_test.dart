@@ -3,7 +3,6 @@ import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 import 'package:relaxation/features/data_query_feature/domain/usecases/get_album.dart';
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_albums.dart';
 //! important
 import '../../../../core/shared/shared_mocks.mocks.dart';
 

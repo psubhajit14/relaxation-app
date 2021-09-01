@@ -1,3 +1,4 @@
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_audio_query/flutter_audio_query.dart' as faq;
 
 import '../../domain/entities/album_info.dart';

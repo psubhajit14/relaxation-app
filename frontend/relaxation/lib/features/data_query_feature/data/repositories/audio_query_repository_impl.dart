@@ -2,6 +2,7 @@ import '../../../../core/error/exception.dart';
 import '../../../../core/utils.dart';
 import '../datasources/audio_query_datasource.dart';
 import '../../../../core/error/failures.dart';
+// ignore: implementation_imports
 import 'package:fpdart/src/either.dart';
 import '../models/models.dart';
 import '../../domain/entities/entities.dart';
