@@ -1,9 +1,9 @@
 import 'usecase_import.dart';
 
-class RemoveSongsToPlaylist {
+class URemoveSongsToPlaylist {
   final AudioQueryRepository repository;
 
-  RemoveSongsToPlaylist({required this.repository});
+  URemoveSongsToPlaylist({required this.repository});
 
   Future<Either<Failure, void>> call({
     required PlaylistInfo playlistInfo,

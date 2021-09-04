@@ -8,11 +8,11 @@ import '../../../../core/shared/shared_mocks.mocks.dart';
 
 void main() {
   late MockAudioQueryRepository mockRepository;
-  late GetSongsByAlbum usecase;
+  late UGetSongsByAlbum usecase;
   late List<SongInfo> songs;
   setUp(() {
     mockRepository = MockAudioQueryRepository();
-    usecase = GetSongsByAlbum(repository: mockRepository);
+    usecase = UGetSongsByAlbum(repository: mockRepository);
     final song = SongInfo(
       id: '1',
       path: 'C://abc.mp3',

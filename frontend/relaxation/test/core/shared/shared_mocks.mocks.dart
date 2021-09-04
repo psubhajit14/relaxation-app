@@ -7,7 +7,6 @@ import 'dart:async' as _i5;
 import 'package:fpdart/fpdart.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:relaxation/core/error/failures.dart' as _i6;
-import 'package:relaxation/core/utils.dart' as _i9;
 import 'package:relaxation/features/data_query_feature/data/datasources/audio_query_datasource.dart'
     as _i8;
 import 'package:relaxation/features/data_query_feature/data/models/models.dart'
@@ -25,16 +24,12 @@ import 'package:relaxation/features/data_query_feature/domain/repositories/audio
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: unnecessary_parenthesis
 
-// ignore: camel_case_types
 class _FakeEither_0<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 
-// ignore: camel_case_types
 class _FakeSongInfoModel_1 extends _i1.Fake implements _i3.SongInfoModel {}
 
-// ignore: camel_case_types
 class _FakeAlbumInfoModel_2 extends _i1.Fake implements _i3.AlbumInfoModel {}
 
-// ignore: camel_case_types
 class _FakePlaylistInfoModel_3 extends _i1.Fake
     implements _i3.PlaylistInfoModel {}
 
@@ -251,18 +246,6 @@ class MockAudioQueryDataSource extends _i1.Mock
           Invocation.method(#removePlaylist, [], {#playlistInfo: playlistInfo}),
           returnValue: Future<void>.value(),
           returnValueForMissingStub: Future<void>.value()) as _i5.Future<void>);
-  @override
-  String toString() => super.toString();
-}
-
-/// A class which mocks [Utils].
-///
-/// See the documentation for Mockito's code generation for more information.
-class MockUtils extends _i1.Mock implements _i9.Utils {
-  MockUtils() {
-    _i1.throwOnMissingStub(this);
-  }
-
   @override
   String toString() => super.toString();
 }

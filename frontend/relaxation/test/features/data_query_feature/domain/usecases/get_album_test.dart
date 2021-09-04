@@ -8,11 +8,11 @@ import '../../../../core/shared/shared_mocks.mocks.dart';
 
 void main() {
   late MockAudioQueryRepository mockRepository;
-  late GetAlbum usecase;
+  late UGetAlbum usecase;
   late AlbumInfo album;
   setUp(() {
     mockRepository = MockAudioQueryRepository();
-    usecase = GetAlbum(repository: mockRepository);
+    usecase = UGetAlbum(repository: mockRepository);
     album = AlbumInfo(
         id: '1', title: "test Album", albumArt: "C:/abc.jpg", noOfSongs: "3");
   });

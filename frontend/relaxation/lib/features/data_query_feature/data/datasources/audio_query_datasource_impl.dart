@@ -7,16 +7,18 @@ import 'package:relaxation/features/data_query_feature/domain/entities/entities.
 import 'package:relaxation/core/error/exception.dart';
 
 class AudioQueryDatasourceImpl extends AudioQueryDataSource {
-  final faq.FlutterAudioQuery flutterAudioQuery = faq.FlutterAudioQuery();
+  final faq.FlutterAudioQuery flutterAudioQuery;
 
-  Future<faq.SongInfo> getSongInfo(SongInfo songInfo) async {
+  AudioQueryDatasourceImpl(this.flutterAudioQuery);
+
+  Future<faq.SongInfo> _getSongInfo(SongInfo songInfo) async {
     faq.SongInfo? song =
         Utils.getItem(await flutterAudioQuery.getSongs(), songInfo.id);
     if (song == null) throw NoSongFoundException();
     return song;
   }
 
-  Future<faq.PlaylistInfo> getPlaylistInfo(PlaylistInfo playlistInfo) async {
+  Future<faq.PlaylistInfo> _getPlaylistInfo(PlaylistInfo playlistInfo) async {
     faq.PlaylistInfo? playlist = Utils.getItem(
         await flutterAudioQuery.getPlaylists(), playlistInfo.name);
     if (playlist == null) throw NoPlayListFoundException();
@@ -26,8 +28,8 @@ class AudioQueryDatasourceImpl extends AudioQueryDataSource {
   @override
   Future<void> addSongToPlaylist(
       {required PlaylistInfo playlistInfo, required SongInfo songInfo}) async {
-    (await getPlaylistInfo(playlistInfo))
-        .addSong(song: await getSongInfo(songInfo));
+    (await _getPlaylistInfo(playlistInfo))
+        .addSong(song: await _getSongInfo(songInfo));
   }
 
   @override
@@ -108,7 +110,7 @@ class AudioQueryDatasourceImpl extends AudioQueryDataSource {
   Future<List<SongInfoModel>> getSongsByPlaylist(
       {required PlaylistInfo playlistInfo}) async {
     List<faq.SongInfo> _songInfoList = await flutterAudioQuery
-        .getSongsFromPlaylist(playlist: await getPlaylistInfo(playlistInfo));
+        .getSongsFromPlaylist(playlist: await _getPlaylistInfo(playlistInfo));
     List<SongInfoModel> songInfoList = [];
     for (var item in _songInfoList) {
       SongInfoModel songInfo = SongInfoModel.fromDevice(item);
@@ -121,14 +123,14 @@ class AudioQueryDatasourceImpl extends AudioQueryDataSource {
   @override
   Future<void> removePlaylist({required PlaylistInfo playlistInfo}) async {
     await faq.FlutterAudioQuery.removePlaylist(
-        playlist: await getPlaylistInfo(playlistInfo));
+        playlist: await _getPlaylistInfo(playlistInfo));
   }
 
   @override
   Future<void> removeSongToPlaylist(
       {required PlaylistInfo playlistInfo, required SongInfo songInfo}) async {
-    (await getPlaylistInfo(playlistInfo))
-        .removeSong(song: await getSongInfo(songInfo));
+    (await _getPlaylistInfo(playlistInfo))
+        .removeSong(song: await _getSongInfo(songInfo));
   }
 
   @override

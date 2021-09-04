@@ -30,7 +30,7 @@ void main() {
     songInfo = songInfoModel;
     songInfoList.add(songInfo);
   });
-  test('should populate childlist value to parentList Value', () async {
+  test('should populate childlist value to parentList Value', () {
     // arrange
     // act
     final result = Utils.populateChild(songInfoModelList);

@@ -8,11 +8,11 @@ import '../../../../core/shared/shared_mocks.mocks.dart';
 
 void main() {
   late MockAudioQueryRepository mockRepository;
-  late CreatePlaylist usecase;
+  late UCreatePlaylist usecase;
   late PlaylistInfo playlistInfo;
   setUp(() {
     mockRepository = MockAudioQueryRepository();
-    usecase = CreatePlaylist(repository: mockRepository);
+    usecase = UCreatePlaylist(repository: mockRepository);
     playlistInfo = PlaylistInfo(
       name: 'test',
       noOfSongs: '0',

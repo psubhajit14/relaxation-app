@@ -1,9 +1,9 @@
 import 'usecase_import.dart';
 
-class AddSongsToPlaylist {
+class UAddSongsToPlaylist {
   final AudioQueryRepository repository;
 
-  AddSongsToPlaylist({required this.repository});
+  UAddSongsToPlaylist({required this.repository});
 
   Future<Either<Failure, void>> call({
     required PlaylistInfo playlistInfo,

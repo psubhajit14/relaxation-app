@@ -1,9 +1,9 @@
 import 'usecase_import.dart';
 
-class GetAllAlbums {
+class UGetAllAlbums {
   final AudioQueryRepository repository;
 
-  GetAllAlbums({required this.repository});
+  UGetAllAlbums({required this.repository});
 
   Future<Either<Failure, List<AlbumInfo>>> call() async {
     return await repository.getAllAlbums();

@@ -1,9 +1,9 @@
 import 'usecase_import.dart';
 
-class GetSongsByPlaylist {
+class UGetSongsByPlaylist {
   final AudioQueryRepository repository;
 
-  GetSongsByPlaylist({required this.repository});
+  UGetSongsByPlaylist({required this.repository});
 
   Future<Either<Failure, List<SongInfo>>> call({
     required PlaylistInfo playlistInfo,

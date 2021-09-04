@@ -1,9 +1,9 @@
 import 'usecase_import.dart';
 
-class SearchAllAlbums {
+class USearchAllAlbums {
   final AudioQueryRepository repository;
 
-  SearchAllAlbums({required this.repository});
+  USearchAllAlbums({required this.repository});
 
   Future<Either<Failure, List<AlbumInfo>>> call({
     required String query,

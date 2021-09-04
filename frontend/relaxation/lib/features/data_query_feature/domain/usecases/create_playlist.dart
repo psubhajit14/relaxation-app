@@ -1,9 +1,9 @@
 import 'usecase_import.dart';
 
-class CreatePlaylist {
+class UCreatePlaylist {
   final AudioQueryRepository repository;
 
-  CreatePlaylist({required this.repository});
+  UCreatePlaylist({required this.repository});
 
   Future<Either<Failure, PlaylistInfo>> call({
     required String name,

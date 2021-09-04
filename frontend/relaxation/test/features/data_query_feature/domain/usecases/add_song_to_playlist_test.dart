@@ -10,12 +10,12 @@ import '../../../../core/shared/shared_mocks.mocks.dart';
 
 void main() {
   late MockAudioQueryRepository mockRepository;
-  late AddSongsToPlaylist usecase;
+  late UAddSongsToPlaylist usecase;
   late SongInfo song;
   late PlaylistInfo playlistInfo;
   setUp(() {
     mockRepository = MockAudioQueryRepository();
-    usecase = AddSongsToPlaylist(repository: mockRepository);
+    usecase = UAddSongsToPlaylist(repository: mockRepository);
     song = SongInfo(
       id: '1',
       path: 'C://abc.mp3',
