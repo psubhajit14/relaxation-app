@@ -1,5 +1,5 @@
 # relaxation-app
-Its a flutter project for UI implementation.
+Its a flutter project for UI implementation With Clean Architechture and Test Driven Development.
 
 Main design credit goes to : Huunray Nosa Eguakun
 
