@@ -18,6 +18,9 @@ like **audioplayers: ^0.19.1** : https://pub.dev/packages/audioplayers
 ### For background play
 **audio_service: ^0.17.1** : https://pub.dev/packages/audioplayers
 
+### Audio service integration :
+https://denis-korovitskii.medium.com/flutter-demo-audioplayers-on-background-via-audio-service-c95d65c90ae1
+
 
 
 
