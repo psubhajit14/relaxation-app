@@ -47,7 +47,7 @@ void main() {
         expect: () => [
           PlaylistInfoInitial(),
           PlaylistLoading(),
-          PlaylistError(kNO_DATA_FOUND)
+          PlaylistError(K_NO_DATA_FOUND)
         ],
       );
       blocTest<PlaylistInfoBloc, PlaylistInfoState>(
@@ -77,7 +77,7 @@ void main() {
         expect: () => [
           PlaylistInfoInitial(),
           PlaylistLoading(),
-          PlaylistError(kNO_PLAYLIST_FOUND)
+          PlaylistError(K_NO_PLAYLIST_FOUND)
         ],
       );
       blocTest<PlaylistInfoBloc, PlaylistInfoState>(
@@ -109,7 +109,7 @@ void main() {
         expect: () => [
           PlaylistInfoInitial(),
           PlaylistLoading(),
-          PlaylistError(kNO_PLAYLIST_FOUND)
+          PlaylistError(K_NO_PLAYLIST_FOUND)
         ],
       );
       blocTest<PlaylistInfoBloc, PlaylistInfoState>(

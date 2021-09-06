@@ -22,11 +22,11 @@ class AlbumInfoBloc extends Bloc<AlbumInfoEvent, AlbumInfoState> {
   ) async* {
     _initialProgress();
     if (event is EGetAlbum) {
-      yield* await _getAlbum(event);
+      yield* _getAlbum(event);
     } else if (event is EGetAllAlbums) {
-      yield* await _getAllAlbum();
+      yield* _getAllAlbum();
     } else if (event is ESearchAllAlbums) {
-      yield* await _searchAllAlbum(event);
+      yield* _searchAllAlbum(event);
     }
   }
 

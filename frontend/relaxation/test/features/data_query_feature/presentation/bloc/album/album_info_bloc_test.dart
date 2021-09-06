@@ -46,7 +46,7 @@ void main() {
         expect: () => [
           AlbumInfoInitial(),
           AlbumLoading(),
-          AlbumError(kNO_DATA_FOUND),
+          AlbumError(K_NO_DATA_FOUND),
         ],
       );
       blocTest<AlbumInfoBloc, AlbumInfoState>(
@@ -75,7 +75,7 @@ void main() {
         expect: () => [
           AlbumInfoInitial(),
           AlbumLoading(),
-          AlbumError(kNO_DATA_FOUND),
+          AlbumError(K_NO_DATA_FOUND),
         ],
       );
       blocTest<AlbumInfoBloc, AlbumInfoState>(
@@ -104,7 +104,7 @@ void main() {
         expect: () => [
           AlbumInfoInitial(),
           AlbumLoading(),
-          AlbumError(kNO_DATA_FOUND),
+          AlbumError(K_NO_DATA_FOUND),
         ],
       );
       blocTest<AlbumInfoBloc, AlbumInfoState>(

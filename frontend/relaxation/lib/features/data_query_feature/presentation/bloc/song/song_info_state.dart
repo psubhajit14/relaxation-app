@@ -3,7 +3,7 @@ part of 'song_info_bloc.dart';
 @immutable
 abstract class SongInfoState extends Equatable {
   final Map<String, dynamic> properties;
-  SongInfoState({this.properties = const {'data': []}}) {}
+  SongInfoState({this.properties = const {'data': []}});
 
   List<SongInfo> get data =>
       List.castFrom<dynamic, SongInfo>(this.properties['data'] ?? []);

@@ -33,26 +33,26 @@ class SongInfoBloc extends Bloc<SongInfoEvent, SongInfoState> {
   ) async* {
     _initialProgress();
     if (event is EGetSong) {
-      yield* await _getSong(event);
+      yield* _getSong(event);
     } else if (event is EGetAllSongs) {
       final songListOrError = await getAllSongs();
-      yield* await _loadSongList(songListOrError);
+      yield* _loadSongList(songListOrError);
     } else if (event is EGetSongByAlbum) {
       final songListOrError = await getSongsByAlbum(albumid: event.albumId);
-      yield* await _loadSongList(songListOrError);
+      yield* _loadSongList(songListOrError);
     } else if (event is EGetSongsByPlaylist) {
-      yield* await _getSongsByPlaylist(event.playlistInfo);
+      yield* _getSongsByPlaylist(event.playlistInfo);
     } else if (event is EAddSongToPlaylist) {
       final songListOrError = await addSongsToPlaylist(
           playlistInfo: event.playlistInfo, songInfo: event.songInfo);
-      yield* await _addOrRemoveSong(songListOrError, event.playlistInfo);
+      yield* _addOrRemoveSong(songListOrError, event.playlistInfo);
     } else if (event is ERemoveSongToPlaylist) {
       final songListOrError = await removeSongsToPlaylist(
           playlistInfo: event.playlistInfo, songInfo: event.songInfo);
-      yield* await _addOrRemoveSong(songListOrError, event.playlistInfo);
+      yield* _addOrRemoveSong(songListOrError, event.playlistInfo);
     } else if (event is ESearchAllSongs) {
       final songListOrError = await searchAllSongs(query: event.query);
-      yield* await _loadSongList(songListOrError);
+      yield* _loadSongList(songListOrError);
     }
   }
 
@@ -61,14 +61,14 @@ class SongInfoBloc extends Bloc<SongInfoEvent, SongInfoState> {
     yield* songListOrError.fold((failure) async* {
       yield SongError(failure.message);
     }, (Void) async* {
-      yield* await _getSongsByPlaylist(playlistInfo);
+      yield* _getSongsByPlaylist(playlistInfo);
     });
   }
 
   Stream<SongInfoState> _getSongsByPlaylist(PlaylistInfo playlistInfo) async* {
     final songListOrError =
         await getSongsByPlaylist(playlistInfo: playlistInfo);
-    yield* await _loadSongList(songListOrError);
+    yield* _loadSongList(songListOrError);
   }
 
   Stream<SongInfoState> _loadSongList(

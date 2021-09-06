@@ -223,6 +223,6 @@ List<SongInfoState> get _expectError {
   return [
     SongInfoInitial(),
     SongLoading(),
-    SongError(kNO_DATA_FOUND),
+    SongError(K_NO_DATA_FOUND),
   ];
 }

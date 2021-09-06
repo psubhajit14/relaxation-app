@@ -3,7 +3,7 @@ part of 'album_info_bloc.dart';
 @immutable
 class AlbumInfoState extends Equatable {
   final Map<String, dynamic> properties;
-  AlbumInfoState({this.properties = const {'data': []}}) {}
+  AlbumInfoState({this.properties = const {'data': []}});
 
   List<AlbumInfo> get data =>
       List.castFrom<dynamic, AlbumInfo>(this.properties['data'] ?? []);

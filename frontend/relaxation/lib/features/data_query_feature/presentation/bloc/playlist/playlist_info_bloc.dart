@@ -23,11 +23,11 @@ class PlaylistInfoBloc extends Bloc<PlaylistInfoEvent, PlaylistInfoState> {
   ) async* {
     _initialProgress();
     if (event is ECreatePlaylist) {
-      yield* await _createPlaylist(event);
+      yield* _createPlaylist(event);
     } else if (event is ERemovePlaylist) {
-      yield* await _removePlaylist(event);
+      yield* _removePlaylist(event);
     } else if (event is EGetAllPlaylists) {
-      yield* await _getAllPlaylist();
+      yield* _getAllPlaylist();
     }
   }
 
