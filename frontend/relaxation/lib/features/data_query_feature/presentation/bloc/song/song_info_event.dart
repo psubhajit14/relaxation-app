@@ -3,6 +3,10 @@ part of 'song_info_bloc.dart';
 @immutable
 abstract class SongInfoEvent {}
 
+class EClearSongs extends SongInfoEvent {
+  EClearSongs();
+}
+
 class EGetSong extends SongInfoEvent {
   final String id;
   EGetSong(this.id);

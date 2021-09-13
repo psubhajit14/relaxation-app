@@ -3,6 +3,10 @@ part of 'album_info_bloc.dart';
 @immutable
 abstract class AlbumInfoEvent {}
 
+class EClearAlbums extends AlbumInfoEvent {
+  EClearAlbums();
+}
+
 class EGetAllAlbums extends AlbumInfoEvent {
   EGetAllAlbums();
 }

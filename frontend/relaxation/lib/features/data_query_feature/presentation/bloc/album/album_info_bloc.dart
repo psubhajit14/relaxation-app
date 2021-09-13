@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:meta/meta.dart';
+import 'package:relaxation/core/error/failures.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 import 'package:relaxation/features/data_query_feature/domain/usecases/usecases.dart';
 
@@ -27,6 +29,8 @@ class AlbumInfoBloc extends Bloc<AlbumInfoEvent, AlbumInfoState> {
       yield* _getAllAlbum();
     } else if (event is ESearchAllAlbums) {
       yield* _searchAllAlbum(event);
+    } else if (event is EClearAlbums) {
+      yield AlbumInfoInitial();
     }
   }
 

@@ -19,8 +19,14 @@ class AudioQueryDatasourceImpl extends AudioQueryDataSource {
   }
 
   Future<faq.PlaylistInfo> _getPlaylistInfo(PlaylistInfo playlistInfo) async {
-    faq.PlaylistInfo? playlist = Utils.getItem(
-        await flutterAudioQuery.getPlaylists(), playlistInfo.name);
+    faq.PlaylistInfo? playlist;
+    playlistInfo.name;
+    List<faq.PlaylistInfo> qList = await flutterAudioQuery.getPlaylists();
+    for (faq.PlaylistInfo item in qList) {
+      if (item.id == playlistInfo.id) {
+        playlist = item;
+      }
+    }
     if (playlist == null) throw NoPlayListFoundException();
     return playlist;
   }
@@ -122,8 +128,9 @@ class AudioQueryDatasourceImpl extends AudioQueryDataSource {
 
   @override
   Future<void> removePlaylist({required PlaylistInfo playlistInfo}) async {
-    await faq.FlutterAudioQuery.removePlaylist(
-        playlist: await _getPlaylistInfo(playlistInfo));
+    faq.PlaylistInfo playlist = await _getPlaylistInfo(playlistInfo);
+    print(playlist.name + 'f');
+    await faq.FlutterAudioQuery.removePlaylist(playlist: playlist);
   }
 
   @override

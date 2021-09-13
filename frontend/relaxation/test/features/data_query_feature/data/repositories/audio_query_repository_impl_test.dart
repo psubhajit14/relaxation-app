@@ -36,7 +36,7 @@ void main() {
     String noOfSongs = "5";
     List<String> songList = <String>[];
     playlistInfoModel = PlaylistInfoModel(
-        name: playlistName, noOfSongs: noOfSongs, songList: songList);
+        name: playlistName, noOfSongs: noOfSongs, songList: songList, id: '');
     playListInfoModelList.add(playlistInfoModel);
     playlistInfo = playlistInfoModel;
     playListInfoList.add(playlistInfo);

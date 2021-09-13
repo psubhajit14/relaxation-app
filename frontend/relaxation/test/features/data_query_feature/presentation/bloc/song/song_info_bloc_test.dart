@@ -43,7 +43,8 @@ void main() {
         artworkPath: "artworkPath");
     songList.add(song);
 
-    playlist = PlaylistInfo(name: "test1", noOfSongs: '5', songList: ["sd"]);
+    playlist =
+        PlaylistInfo(name: "test1", noOfSongs: '5', songList: ["sd"], id: '');
   });
   group('Song Bloc :', () {
     blocTest<SongInfoBloc, SongInfoState>(

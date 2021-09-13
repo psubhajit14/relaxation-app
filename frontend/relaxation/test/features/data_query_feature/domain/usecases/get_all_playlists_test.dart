@@ -18,6 +18,7 @@ void main() {
       name: 'test',
       noOfSongs: '0',
       songList: <String>[],
+      id: '',
     );
     playlists.add(playlistInfo);
   });

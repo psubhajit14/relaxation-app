@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:relaxation/core/shared_data/queue.dart';
 import 'package:relaxation/features/audio_player_feature/presentation/widgets/player_buttons.dart';
-import 'package:relaxation/features/audio_player_feature/presentation/widgets/playlist.dart';
 import 'package:relaxation/features/data_query_feature/presentation/bloc/song/song_info_bloc.dart';
 
 /// An audio player.
@@ -37,64 +36,61 @@ class _PlayerState extends State<Player> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Player'),
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        height: double.infinity,
+        width: double.infinity,
+        child: BlocBuilder<SongInfoBloc, SongInfoState>(builder: (_, state) {
+          if (state is SongInfoInitial) {
+            BlocProvider.of<SongInfoBloc>(context).add(EGetAllSongs());
+            return Center(child: CircularProgressIndicator());
+          } else if (_queue.songList.isEmpty && state is SongLoaded) {
+            _queue.loadSongs(songList: state.songList);
+            return _loadPlayer();
+          } else if (_queue.songList.isNotEmpty && state is SongLoaded) {
+            return _loadPlayer();
+          } else {
+            return Center(
+              child: Text(state.message),
+            );
+          }
+        }),
       ),
-      body: Center(
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          height: double.infinity,
-          width: double.infinity,
-          child: SafeArea(
-            child:
-                BlocBuilder<SongInfoBloc, SongInfoState>(builder: (_, state) {
-              if (state is SongInfoInitial) {
-                BlocProvider.of<SongInfoBloc>(context).add(EGetAllSongs());
-                return Center(child: CircularProgressIndicator());
-              } else if (state is SongLoaded) {
-                _queue.loadSongs(songList: state.songList);
-                return Container(
-                  child: Column(
-                    children: [
-                      Expanded(child: Playlist(_audioPlayer)),
-                      Divider(
-                        color: Colors.black,
-                      ),
-                      StreamBuilder<SequenceState?>(
-                          stream: _audioPlayer.sequenceStateStream,
-                          builder: (context, snapshot) {
-                            if (snapshot.data != null) {
-                              return Expanded(
-                                child: getSongArtwork(snapshot.data!.sequence,
-                                    snapshot.data!.currentIndex),
-                              );
-                            } else {
-                              return CircularProgressIndicator();
-                            }
-                          }),
-                      StreamBuilder(
-                          stream: _audioPlayer.positionStream,
-                          builder: (_, snapshot) {
-                            return ProgressBar(
-                              progress: _audioPlayer.position,
-                              total: _audioPlayer.duration ?? Duration.zero,
-                              onSeek: _audioPlayer.seek,
-                            );
-                          }),
-                      PlayerButtons(_audioPlayer),
-                    ],
-                  ),
+    );
+  }
+
+  Container _loadPlayer() {
+    return Container(
+      child: Column(
+        children: [
+          // Expanded(child: Playlist(_audioPlayer)),
+          // Divider(
+          //   color: Colors.black,
+          // ),
+          // StreamBuilder<SequenceState?>(
+          //     stream: _audioPlayer.sequenceStateStream,
+          //     builder: (context, snapshot) {
+          //       if (snapshot.data != null) {
+          //         return Expanded(
+          //           child: getSongArtwork(snapshot.data!.sequence,
+          //               snapshot.data!.currentIndex),
+          //         );
+          //       } else {
+          //         return CircularProgressIndicator();
+          //       }
+          //     }),
+          StreamBuilder(
+              stream: _audioPlayer.positionStream,
+              builder: (_, snapshot) {
+                return ProgressBar(
+                  progress: _audioPlayer.position,
+                  total: _audioPlayer.duration ?? Duration.zero,
+                  onSeek: _audioPlayer.seek,
                 );
-              } else {
-                return Center(
-                  child: Text(state.message),
-                );
-              }
-            }),
-          ),
-        ),
+              }),
+          PlayerButtons(_audioPlayer),
+        ],
       ),
     );
   }

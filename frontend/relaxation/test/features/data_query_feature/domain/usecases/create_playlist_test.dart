@@ -17,6 +17,7 @@ void main() {
       name: 'test',
       noOfSongs: '0',
       songList: <String>[],
+      id: '',
     );
   });
   test('should create playlist ', () async {

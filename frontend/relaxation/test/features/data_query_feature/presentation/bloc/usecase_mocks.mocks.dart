@@ -2,37 +2,45 @@
 // in relaxation/test/features/data_query_feature/presentation/bloc/usecase_mocks.dart.
 // Do not manually edit this file.
 
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
+import 'package:fpdart/fpdart.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:relaxation/features/data_query_feature/domain/usecases/add_song_to_playlist.dart'
-    as _i13;
-import 'package:relaxation/features/data_query_feature/domain/usecases/create_playlist.dart'
-    as _i16;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_album.dart'
-    as _i3;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_albums.dart'
-    as _i5;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_playlists.dart'
-    as _i6;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_songs.dart'
+import 'package:relaxation/core/error/failures.dart' as _i6;
+import 'package:relaxation/features/data_query_feature/domain/entities/album_info.dart'
     as _i7;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_song.dart'
-    as _i8;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_songs_by_album.dart'
-    as _i9;
-import 'package:relaxation/features/data_query_feature/domain/usecases/get_songs_by_playlist.dart'
+import 'package:relaxation/features/data_query_feature/domain/entities/playlist_info.dart'
     as _i10;
-import 'package:relaxation/features/data_query_feature/domain/usecases/remove_playlist.dart'
-    as _i15;
-import 'package:relaxation/features/data_query_feature/domain/usecases/remove_song_to_playlist.dart'
-    as _i14;
-import 'package:relaxation/features/data_query_feature/domain/usecases/search_all_albums.dart'
-    as _i11;
-import 'package:relaxation/features/data_query_feature/domain/usecases/search_all_songs.dart'
+import 'package:relaxation/features/data_query_feature/domain/entities/song_info.dart'
     as _i12;
-import 'package:relaxation/features/data_query_feature/domain/usecases/usecase_import.dart'
+import 'package:relaxation/features/data_query_feature/domain/repositories/audio_query_repository.dart'
     as _i2;
+import 'package:relaxation/features/data_query_feature/domain/usecases/add_song_to_playlist.dart'
+    as _i18;
+import 'package:relaxation/features/data_query_feature/domain/usecases/create_playlist.dart'
+    as _i21;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_album.dart'
+    as _i4;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_albums.dart'
+    as _i8;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_playlists.dart'
+    as _i9;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_all_songs.dart'
+    as _i11;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_song.dart'
+    as _i13;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_songs_by_album.dart'
+    as _i14;
+import 'package:relaxation/features/data_query_feature/domain/usecases/get_songs_by_playlist.dart'
+    as _i15;
+import 'package:relaxation/features/data_query_feature/domain/usecases/remove_playlist.dart'
+    as _i20;
+import 'package:relaxation/features/data_query_feature/domain/usecases/remove_song_to_playlist.dart'
+    as _i19;
+import 'package:relaxation/features/data_query_feature/domain/usecases/search_all_albums.dart'
+    as _i16;
+import 'package:relaxation/features/data_query_feature/domain/usecases/search_all_songs.dart'
+    as _i17;
 
 // ignore_for_file: avoid_redundant_argument_values
 // ignore_for_file: avoid_setters_without_getters
@@ -45,12 +53,12 @@ import 'package:relaxation/features/data_query_feature/domain/usecases/usecase_i
 class _FakeAudioQueryRepository_0 extends _i1.Fake
     implements _i2.AudioQueryRepository {}
 
-class _FakeEither_1<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
+class _FakeEither_1<L, R> extends _i1.Fake implements _i3.Either<L, R> {}
 
 /// A class which mocks [UGetAlbum].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUGetAlbum extends _i1.Mock implements _i3.UGetAlbum {
+class MockUGetAlbum extends _i1.Mock implements _i4.UGetAlbum {
   MockUGetAlbum() {
     _i1.throwOnMissingStub(this);
   }
@@ -60,11 +68,11 @@ class MockUGetAlbum extends _i1.Mock implements _i3.UGetAlbum {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, _i2.AlbumInfo>> call({String? id}) =>
+  _i5.Future<_i3.Either<_i6.Failure, _i7.AlbumInfo>> call({String? id}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#id: id}),
-              returnValue: Future<_i2.Either<_i2.Failure, _i2.AlbumInfo>>.value(
-                  _FakeEither_1<_i2.Failure, _i2.AlbumInfo>()))
-          as _i4.Future<_i2.Either<_i2.Failure, _i2.AlbumInfo>>);
+              returnValue: Future<_i3.Either<_i6.Failure, _i7.AlbumInfo>>.value(
+                  _FakeEither_1<_i6.Failure, _i7.AlbumInfo>()))
+          as _i5.Future<_i3.Either<_i6.Failure, _i7.AlbumInfo>>);
   @override
   String toString() => super.toString();
 }
@@ -72,7 +80,7 @@ class MockUGetAlbum extends _i1.Mock implements _i3.UGetAlbum {
 /// A class which mocks [UGetAllAlbums].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUGetAllAlbums extends _i1.Mock implements _i5.UGetAllAlbums {
+class MockUGetAllAlbums extends _i1.Mock implements _i8.UGetAllAlbums {
   MockUGetAllAlbums() {
     _i1.throwOnMissingStub(this);
   }
@@ -82,12 +90,12 @@ class MockUGetAllAlbums extends _i1.Mock implements _i5.UGetAllAlbums {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.AlbumInfo>>> call() =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.AlbumInfo>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
               returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.AlbumInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.AlbumInfo>>()))
-          as _i4.Future<_i2.Either<_i2.Failure, List<_i2.AlbumInfo>>>);
+                  Future<_i3.Either<_i6.Failure, List<_i7.AlbumInfo>>>.value(
+                      _FakeEither_1<_i6.Failure, List<_i7.AlbumInfo>>()))
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i7.AlbumInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -95,7 +103,7 @@ class MockUGetAllAlbums extends _i1.Mock implements _i5.UGetAllAlbums {
 /// A class which mocks [UGetAllPlaylists].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUGetAllPlaylists extends _i1.Mock implements _i6.UGetAllPlaylists {
+class MockUGetAllPlaylists extends _i1.Mock implements _i9.UGetAllPlaylists {
   MockUGetAllPlaylists() {
     _i1.throwOnMissingStub(this);
   }
@@ -105,12 +113,12 @@ class MockUGetAllPlaylists extends _i1.Mock implements _i6.UGetAllPlaylists {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.PlaylistInfo>>> call() =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i10.PlaylistInfo>>> call() =>
       (super.noSuchMethod(Invocation.method(#call, []),
-              returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.PlaylistInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.PlaylistInfo>>()))
-          as _i4.Future<_i2.Either<_i2.Failure, List<_i2.PlaylistInfo>>>);
+          returnValue:
+              Future<_i3.Either<_i6.Failure, List<_i10.PlaylistInfo>>>.value(
+                  _FakeEither_1<_i6.Failure, List<_i10.PlaylistInfo>>())) as _i5
+          .Future<_i3.Either<_i6.Failure, List<_i10.PlaylistInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -118,7 +126,7 @@ class MockUGetAllPlaylists extends _i1.Mock implements _i6.UGetAllPlaylists {
 /// A class which mocks [UGetAllSongs].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUGetAllSongs extends _i1.Mock implements _i7.UGetAllSongs {
+class MockUGetAllSongs extends _i1.Mock implements _i11.UGetAllSongs {
   MockUGetAllSongs() {
     _i1.throwOnMissingStub(this);
   }
@@ -128,12 +136,12 @@ class MockUGetAllSongs extends _i1.Mock implements _i7.UGetAllSongs {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>> call() => (super
-          .noSuchMethod(Invocation.method(#call, []),
+  _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>> call() =>
+      (super.noSuchMethod(Invocation.method(#call, []),
               returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.SongInfo>>()))
-      as _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>);
+                  Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>.value(
+                      _FakeEither_1<_i6.Failure, List<_i12.SongInfo>>()))
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -141,7 +149,7 @@ class MockUGetAllSongs extends _i1.Mock implements _i7.UGetAllSongs {
 /// A class which mocks [UGetSong].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUGetSong extends _i1.Mock implements _i8.UGetSong {
+class MockUGetSong extends _i1.Mock implements _i13.UGetSong {
   MockUGetSong() {
     _i1.throwOnMissingStub(this);
   }
@@ -151,11 +159,11 @@ class MockUGetSong extends _i1.Mock implements _i8.UGetSong {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, _i2.SongInfo>> call({String? id}) =>
+  _i5.Future<_i3.Either<_i6.Failure, _i12.SongInfo>> call({String? id}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#id: id}),
-              returnValue: Future<_i2.Either<_i2.Failure, _i2.SongInfo>>.value(
-                  _FakeEither_1<_i2.Failure, _i2.SongInfo>()))
-          as _i4.Future<_i2.Either<_i2.Failure, _i2.SongInfo>>);
+              returnValue: Future<_i3.Either<_i6.Failure, _i12.SongInfo>>.value(
+                  _FakeEither_1<_i6.Failure, _i12.SongInfo>()))
+          as _i5.Future<_i3.Either<_i6.Failure, _i12.SongInfo>>);
   @override
   String toString() => super.toString();
 }
@@ -163,7 +171,7 @@ class MockUGetSong extends _i1.Mock implements _i8.UGetSong {
 /// A class which mocks [UGetSongsByAlbum].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUGetSongsByAlbum extends _i1.Mock implements _i9.UGetSongsByAlbum {
+class MockUGetSongsByAlbum extends _i1.Mock implements _i14.UGetSongsByAlbum {
   MockUGetSongsByAlbum() {
     _i1.throwOnMissingStub(this);
   }
@@ -173,13 +181,13 @@ class MockUGetSongsByAlbum extends _i1.Mock implements _i9.UGetSongsByAlbum {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>> call(
+  _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>> call(
           {String? albumid}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#albumid: albumid}),
               returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.SongInfo>>()))
-          as _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>);
+                  Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>.value(
+                      _FakeEither_1<_i6.Failure, List<_i12.SongInfo>>()))
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -188,7 +196,7 @@ class MockUGetSongsByAlbum extends _i1.Mock implements _i9.UGetSongsByAlbum {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUGetSongsByPlaylist extends _i1.Mock
-    implements _i10.UGetSongsByPlaylist {
+    implements _i15.UGetSongsByPlaylist {
   MockUGetSongsByPlaylist() {
     _i1.throwOnMissingStub(this);
   }
@@ -198,14 +206,14 @@ class MockUGetSongsByPlaylist extends _i1.Mock
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>> call(
-          {_i2.PlaylistInfo? playlistInfo}) =>
+  _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>> call(
+          {_i10.PlaylistInfo? playlistInfo}) =>
       (super.noSuchMethod(
               Invocation.method(#call, [], {#playlistInfo: playlistInfo}),
               returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.SongInfo>>()))
-          as _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>);
+                  Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>.value(
+                      _FakeEither_1<_i6.Failure, List<_i12.SongInfo>>()))
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -213,7 +221,7 @@ class MockUGetSongsByPlaylist extends _i1.Mock
 /// A class which mocks [USearchAllAlbums].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUSearchAllAlbums extends _i1.Mock implements _i11.USearchAllAlbums {
+class MockUSearchAllAlbums extends _i1.Mock implements _i16.USearchAllAlbums {
   MockUSearchAllAlbums() {
     _i1.throwOnMissingStub(this);
   }
@@ -223,13 +231,13 @@ class MockUSearchAllAlbums extends _i1.Mock implements _i11.USearchAllAlbums {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.AlbumInfo>>> call(
+  _i5.Future<_i3.Either<_i6.Failure, List<_i7.AlbumInfo>>> call(
           {String? query}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#query: query}),
               returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.AlbumInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.AlbumInfo>>()))
-          as _i4.Future<_i2.Either<_i2.Failure, List<_i2.AlbumInfo>>>);
+                  Future<_i3.Either<_i6.Failure, List<_i7.AlbumInfo>>>.value(
+                      _FakeEither_1<_i6.Failure, List<_i7.AlbumInfo>>()))
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i7.AlbumInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -237,7 +245,7 @@ class MockUSearchAllAlbums extends _i1.Mock implements _i11.USearchAllAlbums {
 /// A class which mocks [USearchAllSongs].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUSearchAllSongs extends _i1.Mock implements _i12.USearchAllSongs {
+class MockUSearchAllSongs extends _i1.Mock implements _i17.USearchAllSongs {
   MockUSearchAllSongs() {
     _i1.throwOnMissingStub(this);
   }
@@ -247,13 +255,13 @@ class MockUSearchAllSongs extends _i1.Mock implements _i12.USearchAllSongs {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>> call(
+  _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>> call(
           {String? query}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#query: query}),
               returnValue:
-                  Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>.value(
-                      _FakeEither_1<_i2.Failure, List<_i2.SongInfo>>()))
-          as _i4.Future<_i2.Either<_i2.Failure, List<_i2.SongInfo>>>);
+                  Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>.value(
+                      _FakeEither_1<_i6.Failure, List<_i12.SongInfo>>()))
+          as _i5.Future<_i3.Either<_i6.Failure, List<_i12.SongInfo>>>);
   @override
   String toString() => super.toString();
 }
@@ -262,7 +270,7 @@ class MockUSearchAllSongs extends _i1.Mock implements _i12.USearchAllSongs {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUAddSongsToPlaylist extends _i1.Mock
-    implements _i13.UAddSongsToPlaylist {
+    implements _i18.UAddSongsToPlaylist {
   MockUAddSongsToPlaylist() {
     _i1.throwOnMissingStub(this);
   }
@@ -272,14 +280,14 @@ class MockUAddSongsToPlaylist extends _i1.Mock
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, void>> call(
-          {_i2.PlaylistInfo? playlistInfo, _i2.SongInfo? songInfo}) =>
+  _i5.Future<_i3.Either<_i6.Failure, void>> call(
+          {_i10.PlaylistInfo? playlistInfo, _i12.SongInfo? songInfo}) =>
       (super.noSuchMethod(
           Invocation.method(
               #call, [], {#playlistInfo: playlistInfo, #songInfo: songInfo}),
-          returnValue: Future<_i2.Either<_i2.Failure, void>>.value(
-              _FakeEither_1<_i2.Failure, void>())) as _i4
-          .Future<_i2.Either<_i2.Failure, void>>);
+          returnValue: Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>())) as _i5
+          .Future<_i3.Either<_i6.Failure, void>>);
   @override
   String toString() => super.toString();
 }
@@ -288,7 +296,7 @@ class MockUAddSongsToPlaylist extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockURemoveSongsToPlaylist extends _i1.Mock
-    implements _i14.URemoveSongsToPlaylist {
+    implements _i19.URemoveSongsToPlaylist {
   MockURemoveSongsToPlaylist() {
     _i1.throwOnMissingStub(this);
   }
@@ -298,14 +306,14 @@ class MockURemoveSongsToPlaylist extends _i1.Mock
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, void>> call(
-          {_i2.PlaylistInfo? playlistInfo, _i2.SongInfo? songInfo}) =>
+  _i5.Future<_i3.Either<_i6.Failure, void>> call(
+          {_i10.PlaylistInfo? playlistInfo, _i12.SongInfo? songInfo}) =>
       (super.noSuchMethod(
           Invocation.method(
               #call, [], {#playlistInfo: playlistInfo, #songInfo: songInfo}),
-          returnValue: Future<_i2.Either<_i2.Failure, void>>.value(
-              _FakeEither_1<_i2.Failure, void>())) as _i4
-          .Future<_i2.Either<_i2.Failure, void>>);
+          returnValue: Future<_i3.Either<_i6.Failure, void>>.value(
+              _FakeEither_1<_i6.Failure, void>())) as _i5
+          .Future<_i3.Either<_i6.Failure, void>>);
   @override
   String toString() => super.toString();
 }
@@ -313,7 +321,7 @@ class MockURemoveSongsToPlaylist extends _i1.Mock
 /// A class which mocks [URemovePlaylist].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockURemovePlaylist extends _i1.Mock implements _i15.URemovePlaylist {
+class MockURemovePlaylist extends _i1.Mock implements _i20.URemovePlaylist {
   MockURemovePlaylist() {
     _i1.throwOnMissingStub(this);
   }
@@ -323,13 +331,13 @@ class MockURemovePlaylist extends _i1.Mock implements _i15.URemovePlaylist {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, void>> call(
-          {_i2.PlaylistInfo? playlistInfo}) =>
+  _i5.Future<_i3.Either<_i6.Failure, void>> call(
+          {_i10.PlaylistInfo? playlistInfo}) =>
       (super.noSuchMethod(
               Invocation.method(#call, [], {#playlistInfo: playlistInfo}),
-              returnValue: Future<_i2.Either<_i2.Failure, void>>.value(
-                  _FakeEither_1<_i2.Failure, void>()))
-          as _i4.Future<_i2.Either<_i2.Failure, void>>);
+              returnValue: Future<_i3.Either<_i6.Failure, void>>.value(
+                  _FakeEither_1<_i6.Failure, void>()))
+          as _i5.Future<_i3.Either<_i6.Failure, void>>);
   @override
   String toString() => super.toString();
 }
@@ -337,7 +345,7 @@ class MockURemovePlaylist extends _i1.Mock implements _i15.URemovePlaylist {
 /// A class which mocks [UCreatePlaylist].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockUCreatePlaylist extends _i1.Mock implements _i16.UCreatePlaylist {
+class MockUCreatePlaylist extends _i1.Mock implements _i21.UCreatePlaylist {
   MockUCreatePlaylist() {
     _i1.throwOnMissingStub(this);
   }
@@ -347,11 +355,11 @@ class MockUCreatePlaylist extends _i1.Mock implements _i16.UCreatePlaylist {
       Invocation.getter(#repository),
       returnValue: _FakeAudioQueryRepository_0()) as _i2.AudioQueryRepository);
   @override
-  _i4.Future<_i2.Either<_i2.Failure, _i2.PlaylistInfo>> call({String? name}) =>
+  _i5.Future<_i3.Either<_i6.Failure, _i10.PlaylistInfo>> call({String? name}) =>
       (super.noSuchMethod(Invocation.method(#call, [], {#name: name}),
-          returnValue: Future<_i2.Either<_i2.Failure, _i2.PlaylistInfo>>.value(
-              _FakeEither_1<_i2.Failure, _i2.PlaylistInfo>())) as _i4
-          .Future<_i2.Either<_i2.Failure, _i2.PlaylistInfo>>);
+          returnValue: Future<_i3.Either<_i6.Failure, _i10.PlaylistInfo>>.value(
+              _FakeEither_1<_i6.Failure, _i10.PlaylistInfo>())) as _i5
+          .Future<_i3.Either<_i6.Failure, _i10.PlaylistInfo>>);
   @override
   String toString() => super.toString();
 }

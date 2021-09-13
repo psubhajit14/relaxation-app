@@ -1,8 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
+import 'package:relaxation/core/error/failures.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/album_info.dart';
-import 'package:relaxation/features/data_query_feature/domain/usecases/usecases.dart';
 import 'package:relaxation/features/data_query_feature/presentation/bloc/album/album_info_bloc.dart';
 
 import '../usecase_mocks.mocks.dart';

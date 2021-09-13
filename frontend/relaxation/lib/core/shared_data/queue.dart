@@ -6,6 +6,7 @@ class Queue {
   late List<QueueItem> _songList;
   final AudioPlayer _audioPlayer;
 
+  List<QueueItem> get songList => this._songList;
   Queue(this._audioPlayer, {List<SongInfo> songList = const []})
       : _songList = _castToQueueItem(songList);
 

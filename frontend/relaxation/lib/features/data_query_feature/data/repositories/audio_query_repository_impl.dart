@@ -124,6 +124,7 @@ class AudioQueryRepositoryImpl implements AudioQueryRepository {
   Future<Either<Failure, void>> removePlaylist(
       {required PlaylistInfo playlistInfo}) async {
     try {
+      print(playlistInfo.name + 'd');
       return Right(await dataSource.removePlaylist(playlistInfo: playlistInfo));
     } on NoPlayListFoundException {
       return Left(NoPlayListFoundFailure());

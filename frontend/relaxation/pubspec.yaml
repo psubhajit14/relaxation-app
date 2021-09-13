@@ -15,6 +15,7 @@ dependencies:
   get_it: ^7.2.0
   # Bloc for state management
   flutter_bloc: ^7.0.1
+  provider: ^6.0.0
   # Value equality
   equatable: ^2.0.3
   # Functionalprogramming thingies
@@ -30,6 +31,18 @@ dependencies:
   # Local cache
   shared_preferences: ^2.0.6
   cupertino_icons: ^1.0.2
+
+  # Fonts
+  google_fonts: ^2.1.0
+
+  # Icons
+  font_awesome_flutter: ^9.1.0
+
+  # toggle
+  toggle_switch: ^1.2.0
+
+  # dialog
+  ndialog: ^4.1.0
 
 dev_dependencies:
   flutter_test:

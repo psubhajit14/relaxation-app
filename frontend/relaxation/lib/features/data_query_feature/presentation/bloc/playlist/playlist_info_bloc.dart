@@ -59,9 +59,7 @@ class PlaylistInfoBloc extends Bloc<PlaylistInfoEvent, PlaylistInfoState> {
         yield PlaylistError(failure.message);
       },
       (playlist) async* {
-        List<PlaylistInfo> playlistList = List.from(state.data);
-        playlistList.add(playlist);
-        yield PlaylistLoaded(playlistList);
+        yield* _getAllPlaylist();
       },
     );
   }

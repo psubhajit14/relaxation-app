@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:meta/meta.dart';
+import 'package:relaxation/core/error/failures.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 import 'package:relaxation/features/data_query_feature/domain/usecases/usecases.dart';
 
@@ -53,6 +55,8 @@ class SongInfoBloc extends Bloc<SongInfoEvent, SongInfoState> {
     } else if (event is ESearchAllSongs) {
       final songListOrError = await searchAllSongs(query: event.query);
       yield* _loadSongList(songListOrError);
+    } else if (event is EClearSongs) {
+      yield SongInfoInitial();
     }
   }
 

@@ -19,7 +19,7 @@ class Utils {
       }
     } else if (Q is PlaylistInfo) {
       for (Q item in qList) {
-        if ((item as PlaylistInfo).name == matcher) {
+        if ((item as PlaylistInfo).id == matcher) {
           return item;
         }
       }

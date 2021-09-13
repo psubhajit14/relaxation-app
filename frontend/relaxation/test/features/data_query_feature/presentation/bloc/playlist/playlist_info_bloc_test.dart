@@ -2,9 +2,10 @@ import 'dart:ffi';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:mockito/mockito.dart';
 import 'package:relaxation/core/error/failures.dart';
-import 'package:relaxation/features/data_query_feature/domain/usecases/usecases.dart';
+import 'package:relaxation/features/data_query_feature/domain/entities/entities.dart';
 import 'package:relaxation/features/data_query_feature/presentation/bloc/playlist/playlist_info_bloc.dart';
 
 import '../usecase_mocks.mocks.dart';
@@ -25,6 +26,7 @@ void main() {
       name: "test1",
       noOfSongs: '5',
       songList: ["sd"],
+      id: '',
     );
     playlistList.add(playlist);
   });
@@ -44,15 +46,12 @@ void main() {
           return bloc;
         },
         act: (_bloc) => _bloc.add(ECreatePlaylist("test")),
-        expect: () => [
-          PlaylistInfoInitial(),
-          PlaylistLoading(),
-          PlaylistError(K_NO_DATA_FOUND)
-        ],
+        expect: () => _expectError,
       );
       blocTest<PlaylistInfoBloc, PlaylistInfoState>(
         'Should emit [PlaylistInfoInitial,PlaylistLoading,PlaylistLoaded(playlistList)] at create Playlist',
         build: () {
+          when(getAllPlaylists()).thenAnswer((_) async => Right(playlistList));
           when(createPlaylist(name: "test1"))
               .thenAnswer((_) async => Right(playlist));
           return bloc;
@@ -61,7 +60,7 @@ void main() {
         expect: () => [
           PlaylistInfoInitial(),
           PlaylistLoading(),
-          PlaylistLoaded(<PlaylistInfo>[playlist])
+          PlaylistLoaded(playlistList)
         ],
       );
     });
@@ -70,21 +69,16 @@ void main() {
         'Should emit [PlaylistInfoInitial,PlaylistLoading,PlaylistError] at remove Playlist',
         build: () {
           when(removePlaylist(playlistInfo: playlist))
-              .thenAnswer((_) async => Left(NoPlayListFoundFailure()));
+              .thenAnswer((_) async => Left(NoDataFoundFailure()));
           return bloc;
         },
         act: (_bloc) => _bloc.add(ERemovePlaylist(playlist)),
-        expect: () => [
-          PlaylistInfoInitial(),
-          PlaylistLoading(),
-          PlaylistError(K_NO_PLAYLIST_FOUND)
-        ],
+        expect: () => _expectError,
       );
       blocTest<PlaylistInfoBloc, PlaylistInfoState>(
         'Should emit [PlaylistInfoInitial,PlaylistLoading,PlaylistLoaded(playlist)]',
         build: () {
-          when(getAllPlaylists())
-              .thenAnswer((_) async => Right(<PlaylistInfo>[]));
+          when(getAllPlaylists()).thenAnswer((_) async => Right(playlistList));
           when(removePlaylist(playlistInfo: playlist))
               .thenAnswer((_) async => Right(Void));
           return bloc;
@@ -93,7 +87,7 @@ void main() {
         expect: () => [
           PlaylistInfoInitial(),
           PlaylistLoading(),
-          PlaylistLoaded(<PlaylistInfo>[])
+          PlaylistLoaded(playlistList)
         ],
       );
     });
@@ -102,15 +96,11 @@ void main() {
         'Should emit [PlaylistInfoInitial,PlaylistLoading,PlaylistError] at Get All Playlist',
         build: () {
           when(getAllPlaylists())
-              .thenAnswer((_) async => Left(NoPlayListFoundFailure()));
+              .thenAnswer((_) async => Left(NoDataFoundFailure()));
           return bloc;
         },
         act: (_bloc) => _bloc.add(EGetAllPlaylists()),
-        expect: () => [
-          PlaylistInfoInitial(),
-          PlaylistLoading(),
-          PlaylistError(K_NO_PLAYLIST_FOUND)
-        ],
+        expect: () => _expectError,
       );
       blocTest<PlaylistInfoBloc, PlaylistInfoState>(
         'Should emit [PlaylistInfoInitial,PlaylistLoading,PlaylistLoaded(playlist)]',
@@ -127,4 +117,12 @@ void main() {
       );
     });
   });
+}
+
+List<PlaylistInfoState> get _expectError {
+  return [
+    PlaylistInfoInitial(),
+    PlaylistLoading(),
+    PlaylistError(K_NO_DATA_FOUND),
+  ];
 }
