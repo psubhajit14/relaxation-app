@@ -20,7 +20,6 @@ class AudioQueryDatasourceImpl extends AudioQueryDataSource {
 
   Future<faq.PlaylistInfo> _getPlaylistInfo(PlaylistInfo playlistInfo) async {
     faq.PlaylistInfo? playlist;
-    playlistInfo.name;
     List<faq.PlaylistInfo> qList = await flutterAudioQuery.getPlaylists();
     for (faq.PlaylistInfo item in qList) {
       if (item.id == playlistInfo.id) {

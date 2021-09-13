@@ -24,16 +24,16 @@ class SongOrAlbumSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Flexible(flex: 2, child: _toggleButton()),
-          Flexible(flex: 6, child: _getAlbumOrSongList())
+          Flexible(flex: 2, child: ToggleButton()),
+          Flexible(flex: 6, child: GetAlbumOrSongList())
         ],
       ),
     );
   }
 }
 
-class _getAlbumOrSongList extends StatelessWidget {
-  const _getAlbumOrSongList({
+class GetAlbumOrSongList extends StatelessWidget {
+  const GetAlbumOrSongList({
     Key? key,
   }) : super(key: key);
 
@@ -157,8 +157,8 @@ class _getAlbumOrSongList extends StatelessWidget {
   }
 }
 
-class _toggleButton extends StatelessWidget {
-  const _toggleButton({
+class ToggleButton extends StatelessWidget {
+  const ToggleButton({
     Key? key,
   }) : super(key: key);
 

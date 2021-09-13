@@ -55,8 +55,6 @@ class SongInfoBloc extends Bloc<SongInfoEvent, SongInfoState> {
     } else if (event is ESearchAllSongs) {
       final songListOrError = await searchAllSongs(query: event.query);
       yield* _loadSongList(songListOrError);
-    } else if (event is EClearSongs) {
-      yield SongInfoInitial();
     }
   }
 
