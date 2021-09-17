@@ -8,8 +8,10 @@ import 'package:relaxation/features/data_query_feature/domain/entities/playlist_
 import 'package:relaxation/features/data_query_feature/presentation/bloc/playlist/playlist_info_bloc.dart';
 
 class PlaylistBar extends StatelessWidget {
-  const PlaylistBar({
+  final void Function(int id) onTap;
+  PlaylistBar({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -34,7 +36,11 @@ class PlaylistBar extends StatelessWidget {
                             if (id == playlist.length) {
                               return _createPlaylist();
                             }
-                            return somePlaylist(playlist: playlist, id: id);
+                            return somePlaylist(
+                              playlist: playlist,
+                              id: id,
+                              onTap: onTap,
+                            );
                           })
                       : _createPlaylist();
                 } else if (state is PlaylistInfoInitial) {
@@ -52,11 +58,13 @@ class PlaylistBar extends StatelessWidget {
 }
 
 class somePlaylist extends StatefulWidget {
-  const somePlaylist({Key? key, required this.playlist, required this.id})
+  const somePlaylist(
+      {Key? key, required this.playlist, required this.id, required this.onTap})
       : super(key: key);
 
   final List<PlaylistInfo> playlist;
   final int id;
+  final void Function(int id) onTap;
 
   @override
   _somePlaylistState createState() => _somePlaylistState();
@@ -71,6 +79,9 @@ class _somePlaylistState extends State<somePlaylist> {
         setState(() {
           isFront = !isFront;
         });
+      },
+      onTap: () {
+        widget.onTap(widget.id);
       },
       child: Card(
         elevation: 5,

@@ -1,46 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:relaxation/features/audio_player_feature/presentation/data/song_or_album.dart';
-import 'package:relaxation/features/data_query_feature/presentation/bloc/album/album_info_bloc.dart';
-import 'package:relaxation/features/data_query_feature/presentation/bloc/playlist/playlist_info_bloc.dart';
-
-import 'features/data_query_feature/presentation/bloc/song/song_info_bloc.dart';
-import 'features/data_query_feature/presentation/pages/homepage.dart';
 import 'injection/injection_container.dart' as di;
+import 'router/app_route_information_parser.dart';
+import 'router/app_router_delegate.dart';
 
 void main() {
   di.init();
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
+  final AppRouterDelegate _recipeRouteDelegate = AppRouterDelegate();
+  final AppRouterInformationParser _informationParser =
+      AppRouterInformationParser();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      title: 'Nested Route',
+      routeInformationParser: _informationParser,
+      routerDelegate: _recipeRouteDelegate,
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
-          body: MultiBlocProvider(
-              providers: [
-                BlocProvider<SongInfoBloc>(
-                    create: (_) => di.sl<SongInfoBloc>()),
-                BlocProvider<AlbumInfoBloc>(
-                    create: (_) => di.sl<AlbumInfoBloc>()),
-                BlocProvider<PlaylistInfoBloc>(
-                    create: (_) => di.sl<PlaylistInfoBloc>())
-              ],
-              child: ChangeNotifierProvider<SongOrAlbum>(
-                create: (_) => SongOrAlbum(true),
-                builder: (ctx, _) {
-                  return HomePage();
-                },
-              )),
-        ),
+      theme: ThemeData(
+        backgroundColor: Colors.white,
+        accentColor: Colors.greenAccent,
       ),
     );
   }
 }
+
+
+
 
 
 

@@ -4,17 +4,22 @@ import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_audio_query/flutter_audio_query.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:relaxation/constants/textstyle.dart';
+import 'package:relaxation/core/shared_data/queue.dart';
 import 'package:relaxation/features/audio_player_feature/presentation/data/song_or_album.dart';
 import 'package:relaxation/features/data_query_feature/presentation/bloc/album/album_info_bloc.dart';
 import 'package:relaxation/features/data_query_feature/presentation/bloc/song/song_info_bloc.dart';
 import 'package:relaxation/injection/injection_container.dart';
+import 'package:relaxation/router/app_state.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class SongOrAlbumSection extends StatelessWidget {
+  final void Function(int id) onTap;
   const SongOrAlbumSection({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -25,7 +30,7 @@ class SongOrAlbumSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Flexible(flex: 2, child: ToggleButton()),
-          Flexible(flex: 6, child: GetAlbumOrSongList())
+          Flexible(flex: 6, child: GetAlbumOrSongList(onTap: (id) => onTap(id)))
         ],
       ),
     );
@@ -33,8 +38,10 @@ class SongOrAlbumSection extends StatelessWidget {
 }
 
 class GetAlbumOrSongList extends StatelessWidget {
+  final void Function(int id) onTap;
   const GetAlbumOrSongList({
     Key? key,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -58,7 +65,11 @@ class GetAlbumOrSongList extends StatelessWidget {
               return GestureDetector(
                 onTap: () {
                   // TODO : Get Songs By Album or Play Song
-                  print("$idx pressed");
+                  Provider.of<AppState>(_, listen: false).selectedIndex = 1;
+                  Provider.of<Queue>(_, listen: false)
+                      .loadSongs(songList: state.songList);
+                  Provider.of<AudioPlayer>(_, listen: false)
+                      .seek(Duration.zero, index: idx);
                 },
                 child: ListTile(
                   leading: Container(
@@ -102,7 +113,10 @@ class GetAlbumOrSongList extends StatelessWidget {
             itemBuilder: (_, idx) {
               return GestureDetector(
                 onTap: () {
-                  print("$idx pressed");
+                  int? id = int.tryParse(state.albumList[idx].id);
+                  BlocProvider.of<SongInfoBloc>(_)
+                      .add(EGetSongByAlbum(state.albumList[idx].id));
+                  onTap(id!);
                 },
                 child: ListTile(
                   leading: Container(

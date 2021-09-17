@@ -31,11 +31,11 @@ class PlayerButtons extends StatelessWidget {
           },
         ),
         // Play/pause/restart
-        StreamBuilder<PlayerState?>(
+        StreamBuilder<PlayerState>(
           stream: _audioPlayer.playerStateStream,
           builder: (_, snapshot) {
-            final playerState = snapshot.data!;
-            return _playPauseButton(playerState);
+            return _playPauseButton(
+                snapshot.data ?? PlayerState(false, ProcessingState.loading));
           },
         ),
         // Next
@@ -98,7 +98,7 @@ class PlayerButtons extends StatelessWidget {
   Widget _shuffleButton(BuildContext context, bool isEnabled) {
     return IconButton(
       icon: isEnabled
-          ? Icon(Icons.shuffle, color: Theme.of(context).accentColor)
+          ? Icon(Icons.shuffle, color: Theme.of(context).primaryColor)
           : Icon(Icons.shuffle),
       onPressed: () async {
         final enable = !isEnabled;
