@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:relaxation/features/data_query_feature/presentation/screens/screens.dart';
 import 'package:relaxation/router/app_route_path.dart';
 import 'package:relaxation/router/app_state.dart';
-import 'package:relaxation/screens/screens.dart';
 
 class InnerRouterDelegate extends RouterDelegate<AppRouterPath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRouterPath> {
@@ -28,16 +28,7 @@ class InnerRouterDelegate extends RouterDelegate<AppRouterPath>
       pages: [
         if (appState.selectedIndex == 0) ...[
           FadeAnimationPage(
-            child: HomePage(
-              onTap: (String type, int id) {
-                if (type == 'album') {
-                  appState.albumId = id;
-                } else if (type == 'playlist') {
-                  appState.playlistId = id;
-                }
-                notifyListeners();
-              },
-            ),
+            child: HomePage(),
           ),
           if (appState.albumId != null)
             MaterialPage(
@@ -46,7 +37,7 @@ class InnerRouterDelegate extends RouterDelegate<AppRouterPath>
             ),
           if (appState.playlistId != null)
             MaterialPage(
-              key: ValueKey(appState.albumId),
+              key: ValueKey(appState.playlistId),
               child: PlaylistDetailsScreen(playlistId: appState.playlistId!),
             ),
         ] else if (appState.selectedIndex == 2) ...[

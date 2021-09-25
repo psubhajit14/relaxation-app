@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:relaxation/constants/textstyle.dart';
 
-class SettingScreen extends StatelessWidget {
+class PlayerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Settings", style: K_Heading1),
+        title: Text("Player", style: KHeading1),
       ),
-      body: Center(
-        child: Text("Setting"),
-      ),
+      body: Container(),
     );
   }
 }

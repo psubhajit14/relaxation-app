@@ -10,7 +10,8 @@
 --------------------------------------
 ? ----- Data Query Feature -----
 ! 1 .Presentation
-*	a. Widget and Pages 
+  - will be using Freezed, riverpod, bloc, hooks for more code readability and maintainability
+*	a. Widget and Pages  
 *	b. bloc and cubic
 ! 2.Domain
 *	a. usecase

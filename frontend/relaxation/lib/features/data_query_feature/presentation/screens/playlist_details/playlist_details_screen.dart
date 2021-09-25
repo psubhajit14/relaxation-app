@@ -11,11 +11,11 @@ class PlaylistDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(),
-        title: Text("Playlist Details", style: K_Heading1),
+        title: Text("Playlist Details", style: KHeading1),
       ),
-      body: Center(
-        child: Text("Playlist Details"),
-      ),
+      body: Container(),
     );
   }
 }
+
+/// Wrapper for stateful functionality to provide onInit calls in stateles widget

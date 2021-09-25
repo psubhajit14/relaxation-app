@@ -9,7 +9,7 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  final AppRouterDelegate _recipeRouteDelegate = AppRouterDelegate();
+  final AppRouterDelegate _appRouteDelegate = AppRouterDelegate();
   final AppRouterInformationParser _informationParser =
       AppRouterInformationParser();
 
@@ -18,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp.router(
       title: 'Nested Route',
       routeInformationParser: _informationParser,
-      routerDelegate: _recipeRouteDelegate,
+      routerDelegate: _appRouteDelegate,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: Colors.white,
@@ -27,14 +27,3 @@ class App extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-// BlocProvider(
-//         create: (_) => di.sl<SongInfoBloc>(),
-//         child: Player(),
-//       ),

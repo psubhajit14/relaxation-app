@@ -21,31 +21,27 @@ class AppRouterDelegate extends RouterDelegate<AppRouterPath>
     } else if (config is SettingRouterPath) {
       appState.selectedIndex = 2;
     } else if (config is AlbumDetailsRouterPath) {
-      appState.selectedIndex = 3;
+      appState.selectedIndex = 0;
       appState.albumId = config.albumId;
     } else if (config is PlaylistDetailsRouterPath) {
-      appState.selectedIndex = 4;
+      appState.selectedIndex = 0;
       appState.playlistId = config.playlistId;
     }
   }
 
   AppRouterPath get currentConfig {
     if (appState.selectedIndex == 0) {
+      if (appState.albumId != null) {
+        return AlbumDetailsRouterPath(appState.albumId!);
+      }
+      if (appState.playlistId != null) {
+        return PlaylistDetailsRouterPath(appState.playlistId!);
+      }
       return HomeRouterPath();
     } else if (appState.selectedIndex == 1) {
       return PlayerRouterPath();
     } else if (appState.selectedIndex == 2) {
       return SettingRouterPath();
-    } else if (appState.selectedIndex == 3) {
-      if (appState.albumId != null) {
-        return AlbumDetailsRouterPath(appState.albumId!);
-      }
-      return HomeRouterPath();
-    } else if (appState.selectedIndex == 4) {
-      if (appState.playlistId != null) {
-        return PlaylistDetailsRouterPath(appState.playlistId!);
-      }
-      return HomeRouterPath();
     } else
       return HomeRouterPath();
   }
