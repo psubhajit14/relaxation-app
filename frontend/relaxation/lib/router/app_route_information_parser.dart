@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:relaxation/router/router_path.dart';
 import 'app_route_path.dart';
 
 class AppRouterInformationParser extends RouteInformationParser<AppRouterPath> {
@@ -7,40 +7,46 @@ class AppRouterInformationParser extends RouteInformationParser<AppRouterPath> {
   Future<AppRouterPath> parseRouteInformation(
       RouteInformation routeInformation) async {
     final uri = Uri.parse(routeInformation.location!);
-
-    if (uri.pathSegments.isNotEmpty && uri.pathSegments.first == 'settings') {
-      return SettingRouterPath();
-    } else if (uri.pathSegments.length >= 2) {
-      if (uri.pathSegments[0] == 'album') {
-        return AlbumDetailsRouterPath(int.tryParse(uri.pathSegments[1])!);
-      } else if (uri.pathSegments[0] == 'playlist') {
-        return PlaylistDetailsRouterPath(int.tryParse(uri.pathSegments[1])!);
+    if (uri.pathSegments.isNotEmpty) {
+      if (uri.pathSegments.first == RouterPath.Settings) {
+        return SettingsRouterPath();
+      } else if (uri.pathSegments.length >= 2) {
+        if (uri.pathSegments[0] == RouterPath.Album) {
+          return AlbumRouterPath(albumId: int.tryParse(uri.pathSegments[1])!);
+        } else if (uri.pathSegments[0] == RouterPath.Playlist) {
+          return PlaylistRouterPath(
+              playlistId: int.tryParse(uri.pathSegments[1])!);
+        }
+        return HomeRouterPath();
+      } else if (uri.pathSegments.first == RouterPath.Player) {
+        return PlayerRouterPath();
+      } else if (uri.pathSegments.first == RouterPath.Home) {
+        return HomeRouterPath();
       }
-      return HomeRouterPath();
-    } else if (uri.pathSegments.isNotEmpty &&
-        uri.pathSegments.first == 'player') {
-      return PlayerRouterPath();
+      return UnknowmRouterPath();
     }
-    return HomeRouterPath();
+    return UnknowmRouterPath();
   }
 
   @override
   RouteInformation? restoreRouteInformation(AppRouterPath config) {
     if (config is HomeRouterPath) {
-      return RouteInformation(location: '/home');
+      return RouteInformation(location: '/${RouterPath.Home}');
     }
-    if (config is AlbumDetailsRouterPath) {
-      return RouteInformation(location: '/album/${config.albumId}');
+    if (config is AlbumRouterPath) {
+      return RouteInformation(
+          location: '/${RouterPath.Album}/${config.albumId}');
     }
-    if (config is PlaylistDetailsRouterPath) {
-      return RouteInformation(location: '/playlist/${config.playlistId}');
+    if (config is PlaylistRouterPath) {
+      return RouteInformation(
+          location: '/${RouterPath.Playlist}/${config.playlistId}');
     }
-    if (config is SettingRouterPath) {
-      return RouteInformation(location: '/settings');
+    if (config is SettingsRouterPath) {
+      return RouteInformation(location: '/${RouterPath.Settings}');
     }
     if (config is PlayerRouterPath) {
-      return RouteInformation(location: '/player');
+      return RouteInformation(location: '/${RouterPath.Home}');
     }
-    return null;
+    return RouteInformation(location: '/${RouterPath.Unknown}');
   }
 }

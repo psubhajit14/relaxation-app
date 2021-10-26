@@ -1,81 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:just_audio/just_audio.dart';
-import 'package:provider/provider.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:relaxation/constants/textstyle.dart';
+import 'package:relaxation/provider_dependecy.dart';
 import 'package:relaxation/router/app_state.dart';
 import 'package:relaxation/router/inner_router_delegate.dart';
+import 'package:relaxation/router/router_path.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-class MyApp extends StatefulWidget {
-  final AppState appState;
-
-  const MyApp({Key? key, required this.appState}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  late InnerRouterDelegate _innerRouterDelegate;
-  late ChildBackButtonDispatcher _backButtonDispatcher;
-  late AudioPlayer _audioPlayer;
+class MyApp extends HookConsumerWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
-  void initState() {
-    super.initState();
-    _audioPlayer = AudioPlayer();
-    _innerRouterDelegate = InnerRouterDelegate(widget.appState);
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    _backButtonDispatcher = Router.of(context)
-        .backButtonDispatcher!
-        .createChildBackButtonDispatcher();
-  }
-
-  @override
-  void didUpdateWidget(covariant MyApp oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    _innerRouterDelegate.appState = widget.appState;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var appState = widget.appState;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final AppState appState = ref.watch(appStateProvider);
+    final InnerRouterDelegate _innerRouterDelegate =
+        ref.watch(innerRouterDelegateProvider);
+    final RootBackButtonDispatcher _backButtonDispatcher =
+        ref.watch(rootBackButtonDispatcher);
     return SafeArea(
-        child: MultiProvider(
-      providers: [
-        ChangeNotifierProvider<AppState>.value(value: widget.appState),
-        Provider<AudioPlayer>.value(value: _audioPlayer),
-      ],
-      builder: (ctx, _) {
-        return Scaffold(
-          body: Router(
-            routerDelegate: _innerRouterDelegate,
-            backButtonDispatcher: _backButtonDispatcher,
-          ),
-          bottomNavigationBar: BottomNavigationBar(
+      child: Scaffold(
+        backgroundColor: Colors.grey[900],
+        body: Router(
+          routerDelegate: _innerRouterDelegate,
+          backButtonDispatcher:
+              _backButtonDispatcher.createChildBackButtonDispatcher(),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+          child: SalomonBottomBar(
+            unselectedItemColor: Colors.white,
+            selectedItemColor: Colors.green,
             items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
+              SalomonBottomBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                title: Text(
+                  RouterPath.Home.toUpperCase(),
+                  style: KHeading3,
+                ),
               ),
-              BottomNavigationBarItem(
+              SalomonBottomBarItem(
                 icon: Icon(Icons.music_note_outlined),
-                label: 'Player',
+                title: Text(
+                  RouterPath.Player.toUpperCase(),
+                  style: KHeading3,
+                ),
               ),
-              BottomNavigationBarItem(
+              SalomonBottomBarItem(
                 icon: Icon(Icons.settings),
-                label: 'Settings',
+                title: Text(
+                  RouterPath.Settings.toUpperCase(),
+                  style: KHeading3,
+                ),
               ),
             ],
             currentIndex: appState.selectedIndex,
             onTap: (idx) {
-              appState.selectedIndex = idx;
+              appState.copyWith(selectedIndex: idx);
             },
           ),
-        );
-      },
-    ));
+        ),
+      ),
+    );
   }
 }

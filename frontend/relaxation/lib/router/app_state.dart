@@ -1,41 +1,28 @@
 import 'package:flutter/cupertino.dart';
 
 class AppState extends ChangeNotifier {
-  late int _selectedIndex;
-  late int? _albumId;
-  late int? _playlistId;
+  int _selectedIndex;
+  int? _albumId;
+  int? _playlistId;
 
-  AppState()
-      : _selectedIndex = 0,
-        _albumId = null,
-        _playlistId = null;
+  AppState(int _selectedIndex) : _selectedIndex = _selectedIndex;
 
-  int? get playlistId => _playlistId;
+  get selectedIndex => this._selectedIndex;
+  get albumId => this._albumId;
+  get playlistId => this._playlistId;
 
-  set playlistId(int? playlistId) {
-    _playlistId = playlistId;
+  void copyWith({int? selectedIndex, int? albumId, int? playlistId}) {
+    setState(
+      selectedIndex,
+      albumId,
+      playlistId,
+    );
     notifyListeners();
   }
 
-  int? get albumId => _albumId;
-
-  set albumId(int? albumId) {
-    _albumId = albumId;
-    notifyListeners();
-  }
-
-  int get selectedIndex => _selectedIndex;
-
-  set selectedIndex(int selectedIndex) {
-    _selectedIndex = selectedIndex;
-    if (_selectedIndex == 3) {
-      playlistId = null;
-    } else if (_selectedIndex == 4) {
-      albumId = null;
-    } else {
-      albumId = null;
-      playlistId = null;
-    }
-    notifyListeners();
+  void setState(int? selectedIndex, int? albumId, int? playlistId) {
+    if (selectedIndex != null) this._selectedIndex = selectedIndex;
+    this._albumId = albumId;
+    this._playlistId = playlistId;
   }
 }

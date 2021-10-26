@@ -7,19 +7,9 @@ class InnerRouterDelegate extends RouterDelegate<AppRouterPath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRouterPath> {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  late AppState _appState;
+  final AppState appState;
 
-  InnerRouterDelegate(this._appState);
-
-  AppState get appState => _appState;
-
-  set appState(AppState newState) {
-    if (newState == _appState) {
-      return;
-    }
-    _appState = newState;
-    notifyListeners();
-  }
+  InnerRouterDelegate({required this.appState});
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +43,8 @@ class InnerRouterDelegate extends RouterDelegate<AppRouterPath>
         ],
       ],
       onPopPage: (route, result) {
-        appState.albumId = null;
-        appState.playlistId = null;
+        appState.copyWith(albumId: null);
+        appState.copyWith(playlistId: null);
         notifyListeners();
         return route.didPop(result);
       },

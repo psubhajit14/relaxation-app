@@ -1,19 +1,16 @@
-abstract class AppRouterPath {}
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class PlayerRouterPath extends AppRouterPath {}
+part 'app_route_path.freezed.dart';
 
-class HomeRouterPath extends AppRouterPath {}
-
-class AlbumDetailsRouterPath extends AppRouterPath {
-  final int albumId;
-
-  AlbumDetailsRouterPath(this.albumId);
+@freezed
+abstract class AppRouterPath with _$AppRouterPath {
+  factory AppRouterPath.player() = PlayerRouterPath;
+  factory AppRouterPath.home() = HomeRouterPath;
+  factory AppRouterPath.album({required int albumId}) = AlbumRouterPath;
+  factory AppRouterPath.playlist({required int playlistId}) =
+      PlaylistRouterPath;
+  factory AppRouterPath.settings() = SettingsRouterPath;
+  factory AppRouterPath.unknown() = UnknowmRouterPath;
 }
 
-class PlaylistDetailsRouterPath extends AppRouterPath {
-  final int playlistId;
-
-  PlaylistDetailsRouterPath(this.playlistId);
-}
-
-class SettingRouterPath extends AppRouterPath {}
+//TODO: NEED TO CHANGE

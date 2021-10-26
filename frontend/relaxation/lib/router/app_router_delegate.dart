@@ -7,43 +7,47 @@ import 'app_state.dart';
 class AppRouterDelegate extends RouterDelegate<AppRouterPath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRouterPath> {
   final GlobalKey<NavigatorState> navigatorKey;
-  final AppState appState = AppState();
-  AppRouterDelegate() : navigatorKey = GlobalKey<NavigatorState>() {
-    appState.addListener(notifyListeners);
+  final AppState appState;
+
+  AppRouterDelegate({required this.appState})
+      : navigatorKey = GlobalKey<NavigatorState>() {
+    appState.addListener(() {
+      notifyListeners();
+    });
   }
 
   @override
   Future<void> setNewRoutePath(AppRouterPath config) async {
     if (config is HomeRouterPath) {
-      appState.selectedIndex = 0;
+      appState.copyWith(selectedIndex: 0);
     } else if (config is PlayerRouterPath) {
-      appState.selectedIndex = 1;
-    } else if (config is SettingRouterPath) {
-      appState.selectedIndex = 2;
-    } else if (config is AlbumDetailsRouterPath) {
-      appState.selectedIndex = 0;
-      appState.albumId = config.albumId;
-    } else if (config is PlaylistDetailsRouterPath) {
-      appState.selectedIndex = 0;
-      appState.playlistId = config.playlistId;
+      appState.copyWith(selectedIndex: 1);
+    } else if (config is SettingsRouterPath) {
+      appState.copyWith(selectedIndex: 2);
+    } else if (config is AlbumRouterPath) {
+      appState.copyWith(selectedIndex: 0, albumId: config.albumId);
+    } else if (config is PlaylistRouterPath) {
+      appState.copyWith(selectedIndex: 0, playlistId: config.playlistId);
+    } else {
+      appState.copyWith(selectedIndex: 0);
     }
   }
 
   AppRouterPath get currentConfig {
     if (appState.selectedIndex == 0) {
       if (appState.albumId != null) {
-        return AlbumDetailsRouterPath(appState.albumId!);
+        return AlbumRouterPath(albumId: appState.albumId!);
       }
       if (appState.playlistId != null) {
-        return PlaylistDetailsRouterPath(appState.playlistId!);
+        return PlaylistRouterPath(playlistId: appState.playlistId!);
       }
       return HomeRouterPath();
     } else if (appState.selectedIndex == 1) {
       return PlayerRouterPath();
     } else if (appState.selectedIndex == 2) {
-      return SettingRouterPath();
+      return SettingsRouterPath();
     } else
-      return HomeRouterPath();
+      return UnknowmRouterPath();
   }
 
   @override
@@ -55,17 +59,17 @@ class AppRouterDelegate extends RouterDelegate<AppRouterPath>
           return false;
         }
         if (appState.albumId != null) {
-          appState.albumId = null;
+          appState.copyWith(albumId: null);
         }
         if (appState.playlistId != null) {
-          appState.playlistId = null;
+          appState.copyWith(playlistId: null);
         }
         notifyListeners();
         return true;
       },
       pages: [
         MaterialPage(
-          child: MyApp(appState: appState), // appShell
+          child: MyApp(),
         ),
       ],
     );

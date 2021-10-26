@@ -43,13 +43,19 @@ dependencies:
 
   # dialog
   ndialog: ^4.1.0
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^1.0.0-dev.7
+  freezed_annotation:
+
+  # bottom_navigation_bar
+  salomon_bottom_bar: ^3.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.0.11
   build_runner:
-  bloc_test:
+  freezed:
 
 flutter:
   uses-material-design: true
