@@ -53,7 +53,6 @@ class InnerRouterDelegate extends RouterDelegate<AppRouterPath>
 
   @override
   Future<void> setNewRoutePath(AppRouterPath configuration) {
-    // TODO: implement setNewRoutePath
     throw UnimplementedError();
   }
 }

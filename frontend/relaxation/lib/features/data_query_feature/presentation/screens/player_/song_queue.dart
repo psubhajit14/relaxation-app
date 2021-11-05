@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:relaxation/constants/labels.dart';
 import 'package:relaxation/constants/textstyle.dart';
 import 'package:relaxation/features/data_query_feature/presentation/widgets/songlist.dart';
 
@@ -24,7 +25,10 @@ class SongQueue extends StatelessWidget {
                     label: 'Tap to extend the list',
                     isToTop: true,
                   ),
-                  SongList(),
+                  SongList(
+                    songs: [],
+                    type: LSong,
+                  ),
                   PageScroller(
                     scrollController: scrollController,
                     icon: Icons.arrow_drop_down_sharp,

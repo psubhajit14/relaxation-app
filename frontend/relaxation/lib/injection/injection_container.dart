@@ -6,7 +6,9 @@ import 'package:relaxation/features/data_query_feature/data/datasources/audio_qu
 import 'package:relaxation/features/data_query_feature/data/repositories/audio_query_repository_impl.dart';
 import 'package:relaxation/features/data_query_feature/domain/repositories/audio_query_repository.dart';
 import 'package:relaxation/features/data_query_feature/domain/usecases/usecases.dart';
-import 'package:relaxation/router/app_state.dart';
+import 'package:relaxation/features/data_query_feature/presentation/screens/album_details/album_state_bloc/album_state_bloc.dart';
+import 'package:relaxation/features/data_query_feature/presentation/screens/home_/state/home_state_bloc/home_state_bloc.dart';
+import 'package:relaxation/features/data_query_feature/presentation/screens/playlist_details/playlist_state_bloc/playlist_state_bloc.dart';
 
 part 'bloc_injection.dart';
 part 'usecase_injection.dart';

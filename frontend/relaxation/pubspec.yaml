@@ -44,7 +44,7 @@ dependencies:
   # dialog
   ndialog: ^4.1.0
   flutter_hooks: ^0.18.0
-  hooks_riverpod: ^1.0.0-dev.7
+  hooks_riverpod: ^0.14.0+5
   freezed_annotation:
 
   # bottom_navigation_bar

@@ -7,16 +7,16 @@ import 'package:relaxation/router/inner_router_delegate.dart';
 import 'package:relaxation/router/router_path.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-class MyApp extends HookConsumerWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final AppState appState = ref.watch(appStateProvider);
+  Widget build(BuildContext context, ScopedReader watch) {
+    final AppState appState = watch(appStateProvider);
     final InnerRouterDelegate _innerRouterDelegate =
-        ref.watch(innerRouterDelegateProvider);
+        watch(innerRouterDelegateProvider);
     final RootBackButtonDispatcher _backButtonDispatcher =
-        ref.watch(rootBackButtonDispatcher);
+        watch(rootBackButtonDispatcher);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[900],

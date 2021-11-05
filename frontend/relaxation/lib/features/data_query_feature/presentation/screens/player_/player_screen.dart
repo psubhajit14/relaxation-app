@@ -6,9 +6,9 @@ import 'package:relaxation/features/data_query_feature/presentation/screens/play
 import 'package:relaxation/features/data_query_feature/presentation/screens/player_/heading.dart';
 import 'package:relaxation/features/data_query_feature/presentation/screens/player_/song_queue.dart';
 
-class PlayerScreen extends HookConsumerWidget {
+class PlayerScreen extends ConsumerWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, ScopedReader watch) {
     final width = MediaQuery.of(context).size.width;
     // final controller = useAnimationController();
     // controller.forward();

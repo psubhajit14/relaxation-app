@@ -12,13 +12,13 @@ void main() {
 
 class App extends ConsumerWidget {
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, ScopedReader watch) {
     final AppRouterDelegate _appRouteDelegate =
-        ref.watch(appRouterDelegateProvider);
+        watch(appRouterDelegateProvider);
     final AppRouterInformationParser _informationParser =
-        ref.watch(appRouterInformationParser);
+        watch(appRouterInformationParser);
     final RootBackButtonDispatcher _backButtonDispatcher =
-        ref.watch(rootBackButtonDispatcher);
+        watch(rootBackButtonDispatcher);
     return MaterialApp.router(
       title: 'Relaxation App',
       routeInformationParser: _informationParser,

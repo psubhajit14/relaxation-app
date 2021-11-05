@@ -6,11 +6,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:relaxation/constants/textstyle.dart';
 
-class ControlButton extends HookConsumerWidget {
+class ControlButton extends ConsumerWidget {
   const ControlButton({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context, ScopedReader watch) {
     return Container(
       margin: const EdgeInsets.only(top: 24),
       child: Column(
