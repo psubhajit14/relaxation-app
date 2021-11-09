@@ -7,7 +7,6 @@ abstract class PlaylistStateState with _$PlaylistStateState {
     required List<SongInfo> songs,
   }) = _PlaylistStateState;
   factory PlaylistStateState.initial() => PlaylistStateState(
-        playlist: null,
         songs: [],
       );
 }

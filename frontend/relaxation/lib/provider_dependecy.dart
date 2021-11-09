@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:relaxation/features/data_query_feature/presentation/screens/album_details/album_state_bloc/album_state_bloc.dart';
+
+import 'package:relaxation/features/data_query_feature/presentation/screens/album_details/state/album_state_bloc/album_state_bloc.dart';
 import 'package:relaxation/features/data_query_feature/presentation/screens/home_/state/home_state_bloc/home_state_bloc.dart';
-import 'package:relaxation/features/data_query_feature/presentation/screens/playlist_details/playlist_state_bloc/playlist_state_bloc.dart';
+
+import 'package:relaxation/features/data_query_feature/presentation/screens/playlist_details/state/playlist_state_bloc.dart';
 import 'package:relaxation/injection/injection_container.dart';
 import 'package:relaxation/router/app_route_information_parser.dart';
 import 'package:relaxation/router/app_router_delegate.dart';
@@ -26,10 +28,9 @@ final homeStateBloc =
     StateNotifierProvider<HomeStateBloc, AsyncValue<HomeStateState>>(
         (ref) => sl<HomeStateBloc>());
 
-final albumStateBloc =
-    StateNotifierProvider<AlbumStateBloc, AsyncValue<AlbumStateState>>(
-        (ref) => sl<AlbumStateBloc>());
+final albumStateBloc = StateNotifierProvider.autoDispose<AlbumStateBloc,
+    AsyncValue<AlbumStateState>>((ref) => sl<AlbumStateBloc>(param1: ref));
 
-final playlistStateBloc =
-    StateNotifierProvider<PlaylistStateBloc, AsyncValue<PlaylistStateState>>(
-        (ref) => sl<PlaylistStateBloc>(param1: ref.read));
+final playlistStateBloc = StateNotifierProvider.autoDispose<PlaylistStateBloc,
+        AsyncValue<PlaylistStateState>>(
+    (ref) => sl<PlaylistStateBloc>(param1: ref));

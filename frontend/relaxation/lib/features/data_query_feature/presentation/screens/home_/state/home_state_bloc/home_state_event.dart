@@ -8,5 +8,11 @@ abstract class HomeStateEvent with _$HomeStateEvent {
   const factory HomeStateEvent.loadSongs() = _HomeLoadSongs;
   const factory HomeStateEvent.toggleSwitch(int index) = _HomeToggleSwitch;
   const factory HomeStateEvent.addSongToPlaylist(
-      PlaylistInfo playlist, SongInfo song) = _HomeAddSongToPlaylist;
+      {required PlaylistInfo playlist,
+      required SongInfo song}) = _HomeAddSongToPlaylist;
+
+  const factory HomeStateEvent.createPlaylist(String name) =
+      _HomeCreatePlaylist;
+  const factory HomeStateEvent.removePlaylist(PlaylistInfo playlist) =
+      _HomeRemovePlaylist;
 }

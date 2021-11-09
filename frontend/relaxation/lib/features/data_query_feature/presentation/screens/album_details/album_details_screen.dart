@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:relaxation/constants/labels.dart';
 import 'package:relaxation/constants/textstyle.dart';
-import 'package:relaxation/features/data_query_feature/presentation/screens/album_details/album_state_bloc/album_state_bloc.dart';
+import 'package:relaxation/features/data_query_feature/presentation/screens/album_details/state/album_state_bloc/album_state_bloc.dart';
 import 'package:relaxation/features/data_query_feature/presentation/widgets/songlist.dart';
 import 'package:relaxation/router/app_state.dart';
 
@@ -18,8 +18,7 @@ class AlbumDetailsScreen extends ConsumerWidget {
     final AppState appState = watch(appStateProvider);
     final state = watch(albumStateBloc);
     final bloc = context.read(albumStateBloc.notifier);
-    state.maybeWhen(
-        orElse: () => bloc.add(AlbumStateEvent.loadSongs(albumId.toString())));
+
     return Scaffold(
         appBar: AppBar(
           leading: BackButton(
@@ -34,7 +33,7 @@ class AlbumDetailsScreen extends ConsumerWidget {
           color: Colors.black,
           child: state.maybeWhen(
               data: (data) => SongList(songs: data.songs, type: LAlbum),
-              orElse: () => CircularProgressIndicator()),
+              orElse: () => Center(child: CircularProgressIndicator())),
         ));
   }
 }

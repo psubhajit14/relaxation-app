@@ -16,5 +16,5 @@ class AlbumInfo extends Equatable {
   List<Object> get props => [this.id];
 
   @override
-  bool get stringify => false;
+  bool get stringify => true;
 }

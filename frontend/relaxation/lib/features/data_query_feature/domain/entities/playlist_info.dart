@@ -16,5 +16,5 @@ class PlaylistInfo implements Equatable {
   List<Object> get props => [this.id, this.name, this.noOfSongs, this.songList];
 
   @override
-  bool get stringify => false;
+  bool get stringify => true;
 }

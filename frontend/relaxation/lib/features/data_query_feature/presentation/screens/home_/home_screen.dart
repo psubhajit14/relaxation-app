@@ -47,7 +47,7 @@ class HomePage extends ConsumerWidget {
               ],
             ),
           ),
-          loading: () => CircularProgressIndicator(),
+          loading: () => Center(child: CircularProgressIndicator()),
           error: (e, st) => Container(),
         ),
       ),

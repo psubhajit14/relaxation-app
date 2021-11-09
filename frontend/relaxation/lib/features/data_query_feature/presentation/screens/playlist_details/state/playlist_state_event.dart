@@ -4,4 +4,6 @@ part of 'playlist_state_bloc.dart';
 abstract class PlaylistStateEvent with _$PlaylistStateEvent {
   const factory PlaylistStateEvent.loadSongs(int playlistId) =
       _PlaylistLoadSongs;
+  const factory PlaylistStateEvent.removeSong(SongInfo song) =
+      _PlaylistRemoveSong;
 }

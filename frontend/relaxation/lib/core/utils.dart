@@ -11,19 +11,19 @@ class Utils {
   }
 
   static dynamic getItem<Q>(List<Q> qList, String matcher) {
-    if (Q is AlbumInfo) {
+    if (Q == AlbumInfo) {
       for (Q item in qList) {
         if ((item as AlbumInfo).id == matcher) {
           return item;
         }
       }
-    } else if (Q is PlaylistInfo) {
+    } else if (Q == PlaylistInfo) {
       for (Q item in qList) {
         if ((item as PlaylistInfo).id == matcher) {
           return item;
         }
       }
-    } else if (Q is SongInfo) {
+    } else if (Q == SongInfo) {
       for (Q item in qList) {
         if ((item as SongInfo).id == matcher) {
           return item;

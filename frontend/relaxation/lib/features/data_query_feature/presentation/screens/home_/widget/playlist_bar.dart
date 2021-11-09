@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:ndialog/ndialog.dart';
 import 'package:relaxation/constants/textstyle.dart';
 import 'package:relaxation/features/data_query_feature/domain/entities/playlist_info.dart';
+import 'package:relaxation/features/data_query_feature/presentation/screens/home_/state/home_state_bloc/home_state_bloc.dart';
 
 import '../../../../../../provider_dependecy.dart';
 
@@ -56,26 +57,12 @@ class _PlaylistDetails extends HookWidget {
               id: playlist.id,
               label: Center(
                   child: Center(
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.edit,
-                          color: Colors.green,
-                        )),
-                    Divider(
-                      color: Colors.black,
-                      thickness: 5,
-                    ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.delete,
-                          color: Colors.black,
-                        ))
-                  ]))),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.delete,
+                            color: Colors.black,
+                          )))),
             ),
     );
   }
@@ -98,7 +85,7 @@ class _CreatePlaylist extends HookWidget {
   }
 }
 
-class _CustomCard extends ConsumerWidget {
+class _CustomCard extends StatelessWidget {
   final Widget label;
   const _CustomCard({
     Key? key,
@@ -109,10 +96,12 @@ class _CustomCard extends ConsumerWidget {
   final String? id;
   final void Function()? onTap;
   @override
-  Widget build(BuildContext context, ScopedReader watch) {
-    final appstate = watch(appStateProvider);
+  Widget build(BuildContext context) {
     return InkWell(
-      onTap: onTap ?? () => appstate.copyWith(playlistId: int.tryParse(id!)),
+      onTap: onTap ??
+          () => context
+              .read(appStateProvider)
+              .copyWith(playlistId: int.tryParse(id!)),
       child: Container(
         margin: const EdgeInsets.only(left: 8.0),
         width: 150,
@@ -168,7 +157,10 @@ DialogBackground _showDialog(
               style: KTitle,
             ),
             onPressed: () {
-              //String val = _textEditingController.text;
+              String val = _textEditingController.text;
+              context
+                  .read(homeStateBloc.notifier)
+                  .add(HomeStateEvent.createPlaylist(val));
               Navigator.pop(context);
             }),
         ElevatedButton(

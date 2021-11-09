@@ -261,10 +261,22 @@ class _$HomeStateEventTearOff {
   }
 
   _HomeAddSongToPlaylist addSongToPlaylist(
-      PlaylistInfo playlist, SongInfo song) {
+      {required PlaylistInfo playlist, required SongInfo song}) {
     return _HomeAddSongToPlaylist(
+      playlist: playlist,
+      song: song,
+    );
+  }
+
+  _HomeCreatePlaylist createPlaylist(String name) {
+    return _HomeCreatePlaylist(
+      name,
+    );
+  }
+
+  _HomeRemovePlaylist removePlaylist(PlaylistInfo playlist) {
+    return _HomeRemovePlaylist(
       playlist,
-      song,
     );
   }
 }
@@ -283,6 +295,8 @@ mixin _$HomeStateEvent {
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -293,6 +307,8 @@ mixin _$HomeStateEvent {
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -304,6 +320,8 @@ mixin _$HomeStateEvent {
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -314,6 +332,8 @@ mixin _$HomeStateEvent {
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -391,6 +411,8 @@ class _$_HomeLoadInitialData
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) {
     return loadInitial();
   }
@@ -404,6 +426,8 @@ class _$_HomeLoadInitialData
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadInitial != null) {
@@ -421,6 +445,8 @@ class _$_HomeLoadInitialData
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) {
     return loadInitial(this);
   }
@@ -434,6 +460,8 @@ class _$_HomeLoadInitialData
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadInitial != null) {
@@ -502,6 +530,8 @@ class _$_HomeLoadPlaylist
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) {
     return loadPlaylist();
   }
@@ -515,6 +545,8 @@ class _$_HomeLoadPlaylist
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadPlaylist != null) {
@@ -532,6 +564,8 @@ class _$_HomeLoadPlaylist
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) {
     return loadPlaylist(this);
   }
@@ -545,6 +579,8 @@ class _$_HomeLoadPlaylist
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadPlaylist != null) {
@@ -613,6 +649,8 @@ class _$_HomeLoadAlbums
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) {
     return loadAlbums();
   }
@@ -626,6 +664,8 @@ class _$_HomeLoadAlbums
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadAlbums != null) {
@@ -643,6 +683,8 @@ class _$_HomeLoadAlbums
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) {
     return loadAlbums(this);
   }
@@ -656,6 +698,8 @@ class _$_HomeLoadAlbums
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadAlbums != null) {
@@ -722,6 +766,8 @@ class _$_HomeLoadSongs with DiagnosticableTreeMixin implements _HomeLoadSongs {
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) {
     return loadSongs();
   }
@@ -735,6 +781,8 @@ class _$_HomeLoadSongs with DiagnosticableTreeMixin implements _HomeLoadSongs {
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadSongs != null) {
@@ -752,6 +800,8 @@ class _$_HomeLoadSongs with DiagnosticableTreeMixin implements _HomeLoadSongs {
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) {
     return loadSongs(this);
   }
@@ -765,6 +815,8 @@ class _$_HomeLoadSongs with DiagnosticableTreeMixin implements _HomeLoadSongs {
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) {
     if (loadSongs != null) {
@@ -860,6 +912,8 @@ class _$_HomeToggleSwitch
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) {
     return toggleSwitch(index);
   }
@@ -873,6 +927,8 @@ class _$_HomeToggleSwitch
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) {
     if (toggleSwitch != null) {
@@ -890,6 +946,8 @@ class _$_HomeToggleSwitch
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) {
     return toggleSwitch(this);
   }
@@ -903,6 +961,8 @@ class _$_HomeToggleSwitch
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) {
     if (toggleSwitch != null) {
@@ -946,11 +1006,11 @@ class __$HomeAddSongToPlaylistCopyWithImpl<$Res>
     Object? song = freezed,
   }) {
     return _then(_HomeAddSongToPlaylist(
-      playlist == freezed
+      playlist: playlist == freezed
           ? _value.playlist
           : playlist // ignore: cast_nullable_to_non_nullable
               as PlaylistInfo,
-      song == freezed
+      song: song == freezed
           ? _value.song
           : song // ignore: cast_nullable_to_non_nullable
               as SongInfo,
@@ -963,7 +1023,7 @@ class __$HomeAddSongToPlaylistCopyWithImpl<$Res>
 class _$_HomeAddSongToPlaylist
     with DiagnosticableTreeMixin
     implements _HomeAddSongToPlaylist {
-  const _$_HomeAddSongToPlaylist(this.playlist, this.song);
+  const _$_HomeAddSongToPlaylist({required this.playlist, required this.song});
 
   @override
   final PlaylistInfo playlist;
@@ -1017,6 +1077,8 @@ class _$_HomeAddSongToPlaylist
     required TResult Function(int index) toggleSwitch,
     required TResult Function(PlaylistInfo playlist, SongInfo song)
         addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
   }) {
     return addSongToPlaylist(playlist, song);
   }
@@ -1030,6 +1092,8 @@ class _$_HomeAddSongToPlaylist
     TResult Function()? loadSongs,
     TResult Function(int index)? toggleSwitch,
     TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
     required TResult orElse(),
   }) {
     if (addSongToPlaylist != null) {
@@ -1047,6 +1111,8 @@ class _$_HomeAddSongToPlaylist
     required TResult Function(_HomeLoadSongs value) loadSongs,
     required TResult Function(_HomeToggleSwitch value) toggleSwitch,
     required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
   }) {
     return addSongToPlaylist(this);
   }
@@ -1060,6 +1126,8 @@ class _$_HomeAddSongToPlaylist
     TResult Function(_HomeLoadSongs value)? loadSongs,
     TResult Function(_HomeToggleSwitch value)? toggleSwitch,
     TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
     required TResult orElse(),
   }) {
     if (addSongToPlaylist != null) {
@@ -1070,12 +1138,317 @@ class _$_HomeAddSongToPlaylist
 }
 
 abstract class _HomeAddSongToPlaylist implements HomeStateEvent {
-  const factory _HomeAddSongToPlaylist(PlaylistInfo playlist, SongInfo song) =
-      _$_HomeAddSongToPlaylist;
+  const factory _HomeAddSongToPlaylist(
+      {required PlaylistInfo playlist,
+      required SongInfo song}) = _$_HomeAddSongToPlaylist;
 
   PlaylistInfo get playlist => throw _privateConstructorUsedError;
   SongInfo get song => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$HomeAddSongToPlaylistCopyWith<_HomeAddSongToPlaylist> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$HomeCreatePlaylistCopyWith<$Res> {
+  factory _$HomeCreatePlaylistCopyWith(
+          _HomeCreatePlaylist value, $Res Function(_HomeCreatePlaylist) then) =
+      __$HomeCreatePlaylistCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$HomeCreatePlaylistCopyWithImpl<$Res>
+    extends _$HomeStateEventCopyWithImpl<$Res>
+    implements _$HomeCreatePlaylistCopyWith<$Res> {
+  __$HomeCreatePlaylistCopyWithImpl(
+      _HomeCreatePlaylist _value, $Res Function(_HomeCreatePlaylist) _then)
+      : super(_value, (v) => _then(v as _HomeCreatePlaylist));
+
+  @override
+  _HomeCreatePlaylist get _value => super._value as _HomeCreatePlaylist;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_HomeCreatePlaylist(
+      name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_HomeCreatePlaylist
+    with DiagnosticableTreeMixin
+    implements _HomeCreatePlaylist {
+  const _$_HomeCreatePlaylist(this.name);
+
+  @override
+  final String name;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeStateEvent.createPlaylist(name: $name)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeStateEvent.createPlaylist'))
+      ..add(DiagnosticsProperty('name', name));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _HomeCreatePlaylist &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+
+  @JsonKey(ignore: true)
+  @override
+  _$HomeCreatePlaylistCopyWith<_HomeCreatePlaylist> get copyWith =>
+      __$HomeCreatePlaylistCopyWithImpl<_HomeCreatePlaylist>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadInitial,
+    required TResult Function() loadPlaylist,
+    required TResult Function() loadAlbums,
+    required TResult Function() loadSongs,
+    required TResult Function(int index) toggleSwitch,
+    required TResult Function(PlaylistInfo playlist, SongInfo song)
+        addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
+  }) {
+    return createPlaylist(name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadInitial,
+    TResult Function()? loadPlaylist,
+    TResult Function()? loadAlbums,
+    TResult Function()? loadSongs,
+    TResult Function(int index)? toggleSwitch,
+    TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
+    required TResult orElse(),
+  }) {
+    if (createPlaylist != null) {
+      return createPlaylist(name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_HomeLoadInitialData value) loadInitial,
+    required TResult Function(_HomeLoadPlaylist value) loadPlaylist,
+    required TResult Function(_HomeLoadAlbums value) loadAlbums,
+    required TResult Function(_HomeLoadSongs value) loadSongs,
+    required TResult Function(_HomeToggleSwitch value) toggleSwitch,
+    required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
+  }) {
+    return createPlaylist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_HomeLoadInitialData value)? loadInitial,
+    TResult Function(_HomeLoadPlaylist value)? loadPlaylist,
+    TResult Function(_HomeLoadAlbums value)? loadAlbums,
+    TResult Function(_HomeLoadSongs value)? loadSongs,
+    TResult Function(_HomeToggleSwitch value)? toggleSwitch,
+    TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
+    required TResult orElse(),
+  }) {
+    if (createPlaylist != null) {
+      return createPlaylist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HomeCreatePlaylist implements HomeStateEvent {
+  const factory _HomeCreatePlaylist(String name) = _$_HomeCreatePlaylist;
+
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$HomeCreatePlaylistCopyWith<_HomeCreatePlaylist> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$HomeRemovePlaylistCopyWith<$Res> {
+  factory _$HomeRemovePlaylistCopyWith(
+          _HomeRemovePlaylist value, $Res Function(_HomeRemovePlaylist) then) =
+      __$HomeRemovePlaylistCopyWithImpl<$Res>;
+  $Res call({PlaylistInfo playlist});
+}
+
+/// @nodoc
+class __$HomeRemovePlaylistCopyWithImpl<$Res>
+    extends _$HomeStateEventCopyWithImpl<$Res>
+    implements _$HomeRemovePlaylistCopyWith<$Res> {
+  __$HomeRemovePlaylistCopyWithImpl(
+      _HomeRemovePlaylist _value, $Res Function(_HomeRemovePlaylist) _then)
+      : super(_value, (v) => _then(v as _HomeRemovePlaylist));
+
+  @override
+  _HomeRemovePlaylist get _value => super._value as _HomeRemovePlaylist;
+
+  @override
+  $Res call({
+    Object? playlist = freezed,
+  }) {
+    return _then(_HomeRemovePlaylist(
+      playlist == freezed
+          ? _value.playlist
+          : playlist // ignore: cast_nullable_to_non_nullable
+              as PlaylistInfo,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_HomeRemovePlaylist
+    with DiagnosticableTreeMixin
+    implements _HomeRemovePlaylist {
+  const _$_HomeRemovePlaylist(this.playlist);
+
+  @override
+  final PlaylistInfo playlist;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'HomeStateEvent.removePlaylist(playlist: $playlist)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'HomeStateEvent.removePlaylist'))
+      ..add(DiagnosticsProperty('playlist', playlist));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _HomeRemovePlaylist &&
+            (identical(other.playlist, playlist) ||
+                const DeepCollectionEquality()
+                    .equals(other.playlist, playlist)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(playlist);
+
+  @JsonKey(ignore: true)
+  @override
+  _$HomeRemovePlaylistCopyWith<_HomeRemovePlaylist> get copyWith =>
+      __$HomeRemovePlaylistCopyWithImpl<_HomeRemovePlaylist>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadInitial,
+    required TResult Function() loadPlaylist,
+    required TResult Function() loadAlbums,
+    required TResult Function() loadSongs,
+    required TResult Function(int index) toggleSwitch,
+    required TResult Function(PlaylistInfo playlist, SongInfo song)
+        addSongToPlaylist,
+    required TResult Function(String name) createPlaylist,
+    required TResult Function(PlaylistInfo playlist) removePlaylist,
+  }) {
+    return removePlaylist(playlist);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadInitial,
+    TResult Function()? loadPlaylist,
+    TResult Function()? loadAlbums,
+    TResult Function()? loadSongs,
+    TResult Function(int index)? toggleSwitch,
+    TResult Function(PlaylistInfo playlist, SongInfo song)? addSongToPlaylist,
+    TResult Function(String name)? createPlaylist,
+    TResult Function(PlaylistInfo playlist)? removePlaylist,
+    required TResult orElse(),
+  }) {
+    if (removePlaylist != null) {
+      return removePlaylist(playlist);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_HomeLoadInitialData value) loadInitial,
+    required TResult Function(_HomeLoadPlaylist value) loadPlaylist,
+    required TResult Function(_HomeLoadAlbums value) loadAlbums,
+    required TResult Function(_HomeLoadSongs value) loadSongs,
+    required TResult Function(_HomeToggleSwitch value) toggleSwitch,
+    required TResult Function(_HomeAddSongToPlaylist value) addSongToPlaylist,
+    required TResult Function(_HomeCreatePlaylist value) createPlaylist,
+    required TResult Function(_HomeRemovePlaylist value) removePlaylist,
+  }) {
+    return removePlaylist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_HomeLoadInitialData value)? loadInitial,
+    TResult Function(_HomeLoadPlaylist value)? loadPlaylist,
+    TResult Function(_HomeLoadAlbums value)? loadAlbums,
+    TResult Function(_HomeLoadSongs value)? loadSongs,
+    TResult Function(_HomeToggleSwitch value)? toggleSwitch,
+    TResult Function(_HomeAddSongToPlaylist value)? addSongToPlaylist,
+    TResult Function(_HomeCreatePlaylist value)? createPlaylist,
+    TResult Function(_HomeRemovePlaylist value)? removePlaylist,
+    required TResult orElse(),
+  }) {
+    if (removePlaylist != null) {
+      return removePlaylist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HomeRemovePlaylist implements HomeStateEvent {
+  const factory _HomeRemovePlaylist(PlaylistInfo playlist) =
+      _$_HomeRemovePlaylist;
+
+  PlaylistInfo get playlist => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$HomeRemovePlaylistCopyWith<_HomeRemovePlaylist> get copyWith =>
       throw _privateConstructorUsedError;
 }
